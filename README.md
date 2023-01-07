@@ -6,6 +6,11 @@ Welcome to the ecommerce project! This project is a platform for buying and sell
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+## Exercise:
+
+![Exercise 1](./consignas/Entrega1.png)
+
+
 ### Prerequisites
 
 - [ ] Install [node.js](https://nodejs.org/)
