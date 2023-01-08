@@ -1,24 +1,17 @@
-import React from "react";
+import { HStack } from "@chakra-ui/react";
+import NavLink from "./NavLink";
+import links from "constants/navBarLinks";
 
-function NavBar() {
+const NavBar = () => {
   return (
-    <div className="m-auto">
-      <ul className="flex gap-10">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/frutas">Frutas</a>
-        </li>
-        <li>
-          <a href="/verduras">Verduras</a>
-        </li>
-        <li>
-          <a href="/hortalizas">Hortalizas</a>
-        </li>
-      </ul>
-    </div>
+    <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+      {links.map(({ href, label }) => (
+        <NavLink key={label} href={href}>
+          {label}
+        </NavLink>
+      ))}
+    </HStack>
   );
-}
+};
 
 export default NavBar;
