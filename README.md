@@ -8,8 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Exercise:
 
-![Exercise 1](/consignas/Entrega2.png)
-
+![Exercise 2](/consignas/Entrega2.png)
 
 ### Prerequisites
 
@@ -47,8 +46,7 @@ If you want to contribute to the project, please follow these guidelines:
 
 ## Authors
 
-- **César Moros** - *Initial work* - [Cmoros](https://github.com/cmoros)
-
+- **César Moros** - _Initial work_ - [Cmoros](https://github.com/cmoros)
 
 ## License
 
