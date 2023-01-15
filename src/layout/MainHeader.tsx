@@ -17,8 +17,13 @@ function MainHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box bg={"red.500"} px={4} w="full" color="white">
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-        <HStack spacing={8} alignItems={"center"}>
+      <Flex
+        h={16}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        w="full"
+      >
+        <HStack spacing={8} alignItems={"center"} w="full">
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -33,7 +38,7 @@ function MainHeader() {
               <Text as="span" mb="-2">
                 Frutería
               </Text>
-              <Text as="span">MaryCarmen</Text>
+              <Text as="span">Eudalia</Text>
             </Link>
           </VStack>
           <NavBar />
