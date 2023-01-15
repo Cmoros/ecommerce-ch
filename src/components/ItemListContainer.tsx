@@ -1,40 +1,24 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
-import ProductCard from "./Card";
+import { Box } from "@chakra-ui/react";
+import ItemList from "./ItemList";
+import { fakeFetch } from "db/items";
+import { useEffect, useState } from "react";
+import IItem from "types/Item";
 
 interface IProps {
   greeting: string;
 }
 
 const ItemListContainer = ({ greeting }: IProps) => {
+  const [items, setItems] = useState<IItem[]>([]);
+
+  useEffect(() => {
+    fakeFetch().then((newItems) => setItems(newItems));
+  }, []);
+
   return (
     <Box>
       {greeting}
-      <SimpleGrid
-        spacing={4}
-        templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-      >
-        <ProductCard
-          stock={10}
-          initial={2}
-          onAdd={() => {
-            console.log("Clicked on Add");
-          }}
-        />
-        <ProductCard
-          stock={20}
-          initial={4}
-          onAdd={() => {
-            console.log("Clicked on Add");
-          }}
-        />
-        <ProductCard
-          stock={5}
-          initial={1}
-          onAdd={() => {
-            console.log("Clicked on Add");
-          }}
-        />
-      </SimpleGrid>
+      <ItemList items={items} />
     </Box>
   );
 };

@@ -9,13 +9,13 @@ import {
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { IPropsCard } from "./Card";
+import { IItemCard, IPropsCard } from "./Item";
 
 const ItemCount = ({
   stock,
   initial,
   onAdd,
-}: Pick<IPropsCard, "initial" | "onAdd" | "stock">) => {
+}: Pick<IItemCard, "initial" | "stock"> & Pick<IPropsCard, "onAdd">) => {
   const [quantity, setQuantity] = useState(initial);
   const handleAdd = (toAdd: number) => {
     if (quantity === stock) return;
@@ -49,6 +49,7 @@ const ItemCount = ({
           colorScheme="red"
           aria-label={"minus 1"}
           onClick={() => handleSubstract(1)}
+          disabled={quantity === 1}
         />
         <Text>{quantity}</Text>
         <IconButton
@@ -56,6 +57,7 @@ const ItemCount = ({
           colorScheme="red"
           aria-label={"add 1"}
           onClick={() => handleAdd(1)}
+          disabled={quantity === stock}
         />
       </ButtonGroup>
       <Button
