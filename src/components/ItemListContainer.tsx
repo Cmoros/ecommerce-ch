@@ -1,8 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import ItemList from "./ItemList";
-import { fakeFetch } from "db/items";
+import { fakeGet } from "db/items";
 import { useEffect, useState } from "react";
 import IItem from "types/Item";
+import { useParams } from "react-router-dom";
 
 interface IProps {
   greeting: string;
@@ -10,10 +11,10 @@ interface IProps {
 
 const ItemListContainer = ({ greeting }: IProps) => {
   const [items, setItems] = useState<IItem[]>([]);
-
+  const { id } = useParams();
   useEffect(() => {
-    fakeFetch().then((newItems) => setItems(newItems));
-  }, []);
+    fakeGet(id).then((newItems) => setItems(newItems));
+  }, [id]);
 
   return (
     <Box>

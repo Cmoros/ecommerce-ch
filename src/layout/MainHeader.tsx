@@ -3,13 +3,13 @@ import {
   Flex,
   HStack,
   IconButton,
-  Link,
   Stack,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 import links from "constants/navBarLinks";
 import NavBar from "components/NavBar";
 
@@ -34,12 +34,14 @@ function MainHeader() {
             color="white"
           />
           <VStack>
-            <Link fontSize="xl" display="flex" flexDirection="column" gap="0">
-              <Text as="span" mb="-2">
-                Frutería
-              </Text>
-              <Text as="span">Eudalia</Text>
-            </Link>
+            <Text fontSize="xl" display="flex" flexDirection="column" gap="0">
+              <Link to="/">
+                <Text as="span" mb="-2">
+                  Frutería
+                </Text>
+                <Text as="span">Eudalia</Text>
+              </Link>
+            </Text>
           </VStack>
           <NavBar />
         </HStack>
@@ -47,8 +49,8 @@ function MainHeader() {
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
-            {links.map(({ href, label }) => (
-              <Link key={label} href={href}>
+            {links.map(({ to, label }) => (
+              <Link key={label} to={to}>
                 {label}
               </Link>
             ))}

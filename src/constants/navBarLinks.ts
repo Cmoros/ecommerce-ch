@@ -1,9 +1,9 @@
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/fruits", label: "Frutas" },
-  { href: "/vegetables", label: "Verduras" },
-  { href: "/legume", label: "Cereales" },
-  { href: "/others", label: "Otros" },
+  { to: "/", label: "Home" },
+  { to: "/category/fruit", label: "Frutas" },
+  { to: "/category/vegetable", label: "Verduras" },
+  { to: "/category/grain", label: "Granos" },
+  // { href: "/others", label: "Otros" },
 ];
 
 export default links;

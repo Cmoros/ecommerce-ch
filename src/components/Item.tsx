@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Item from "types/Item";
 import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
 
 export interface IItemCard extends Item {
   stock: number;
@@ -22,12 +23,13 @@ export interface IPropsCard {
 }
 
 const ProductCard = ({ item, onAdd }: IPropsCard) => {
-  const { title, price, pictureUrl, stock, initial, description } = item;
+  const { title, price, pictureUrl, stock, initial, description, id } = item;
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image src={pictureUrl} alt={title} borderRadius="lg" />
-
+        <Link to={`/item/${id}`}>
+          <Image src={pictureUrl} alt={title} borderRadius="lg" />
+        </Link>
         <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
           <Text>{description}</Text>

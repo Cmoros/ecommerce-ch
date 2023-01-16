@@ -1,12 +1,10 @@
 export default interface IItem {
-  genus: string;
   name: string;
   title: string;
   price: number;
   pictureUrl: string;
+  category: "grain" | "vegetable" | "fruit";
   id: number;
-  family: string;
-  order: string;
   description: string;
   nutritions: {
     carbohydrates: number;

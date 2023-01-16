@@ -1,7 +1,8 @@
 import { Box, Container, VStack } from "@chakra-ui/react";
 import MainHeader from "layout/MainHeader";
 import ItemDetailContainer from "./ItemDetailContainer";
-// import ItemListContainer from "./ItemListContainer";
+import { Routes, Route } from "react-router-dom";
+import ItemListContainer from "./ItemListContainer";
 
 const App = () => {
   return (
@@ -10,8 +11,14 @@ const App = () => {
         <MainHeader />
         <Container m="auto" w="full" maxW="container.xl">
           {/* <p>My Body</p> */}
-          {/* <ItemListContainer greeting="Esto es el ItemListContainer!" /> */}
-          <ItemDetailContainer />
+          <Routes>
+            <Route path="/" element={<ItemListContainer greeting="" />} />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route
+              path="/category/:id"
+              element={<ItemListContainer greeting="" />}
+            />
+          </Routes>
         </Container>
         <Box
           as="footer"

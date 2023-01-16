@@ -2,219 +2,562 @@ import IItem from "types/Item";
 
 const items: IItem[] = [
   {
-    genus: "Malus",
-    name: "Apple",
-    title: "Apple",
-    price: 21,
-    description:
-      "A round fruit with red, green, or yellow skin and a white or red interior.",
+    name: "Brown Rice",
+    title: "Organic Brown Rice",
+    price: 47,
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 6,
-    family: "Rosaceae",
-    order: "Rosales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 1,
+    description:
+      "Whole grain brown rice, perfect for a healthy and satisfying meal.",
     nutritions: {
-      carbohydrates: 11.4,
-      protein: 0.3,
-      fat: 0.4,
-      calories: 52,
-      sugar: 10.3,
+      carbohydrates: 45,
+      protein: 5,
+      fat: 1,
+      calories: 210,
+      sugar: 0,
     },
   },
   {
-    genus: "Prunus",
-    name: "Apricot",
-    title: "Apricot",
-    description:
-      "A small, round fruit with a orange or yellow skin and a sweet, juicy interior.",
-    price: 77,
+    name: "Quinoa",
+    title: "Organic Quinoa",
+    price: 67,
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 35,
-    family: "Rosaceae",
-    order: "Rosales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 2,
+    description:
+      "Gluten-free quinoa, a superfood packed with protein and minerals.",
     nutritions: {
-      carbohydrates: 3.9,
-      protein: 0.5,
-      fat: 0.1,
-      calories: 15,
-      sugar: 3.2,
+      carbohydrates: 40,
+      protein: 8,
+      fat: 3,
+      calories: 222,
+      sugar: 1,
     },
   },
   {
-    genus: "Persea",
-    name: "Avocado",
-    title: "Avocado",
-    description: "A green, oval-shaped fruit with a creamy, rich flesh.",
-    price: 59,
+    name: "Broccoli",
+    title: "Fresh Broccoli",
+    price: 25,
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 84,
-    family: "Lauraceae",
-    order: "Laurales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 3,
+    description:
+      "Crunchy and healthy broccoli, rich in vitamins and antioxidants.",
     nutritions: {
-      carbohydrates: 8.53,
+      carbohydrates: 6,
       protein: 2,
-      fat: 14.66,
-      calories: 160,
-      sugar: 0.66,
+      fat: 0,
+      calories: 55,
+      sugar: 2,
     },
   },
   {
-    genus: "Musa",
-    name: "Banana",
-    title: "Banana",
+    name: "Carrots",
+    title: "Organic Carrots",
+    price: 32,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 4,
+    description: "Sweet and juicy carrots, a great source of beta-carotene.",
+    nutritions: {
+      carbohydrates: 10,
+      protein: 1,
+      fat: 0,
+      calories: 41,
+      sugar: 5,
+    },
+  },
+  {
+    name: "Apples",
+    title: "Organic Apples",
+    price: 25,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 5,
+    description: "Crisp and delicious apples, perfect for snacking or baking.",
+    nutritions: {
+      carbohydrates: 25,
+      protein: 1,
+      fat: 0,
+      calories: 95,
+      sugar: 14,
+    },
+  },
+  {
+    name: "Bananas",
+    title: "Organic Bananas",
+    price: 14,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 6,
     description:
-      "A long, curved fruit with a yellow or green skin and a soft, creamy interior.",
+      "Ripe and sweet bananas, a great source of potassium and fiber.",
+    nutritions: {
+      carbohydrates: 27,
+      protein: 1,
+      fat: 0,
+      calories: 105,
+      sugar: 14,
+    },
+  },
+  {
+    name: "Spinach",
+    title: "Organic Spinach",
+    price: 33,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 7,
+    description:
+      "Fresh and nutrient-rich spinach, a great addition to salads or smoothies.",
+    nutritions: {
+      carbohydrates: 3,
+      protein: 2,
+      fat: 0,
+      calories: 7,
+      sugar: 0,
+    },
+  },
+  {
+    name: "Sweet Potatoes",
+    title: "Organic Sweet Potatoes",
+    price: 49,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 8,
+    description:
+      "Tender and flavorful sweet potatoes, a great source of vitamin A.",
+    nutritions: {
+      carbohydrates: 27,
+      protein: 2,
+      fat: 0,
+      calories: 103,
+      sugar: 6,
+    },
+  },
+  {
+    name: "Blueberries",
+    title: "Organic Blueberries",
+    price: 56,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 9,
+    description:
+      "Tasty and antioxidant-rich blueberries, perfect for snacking or baking.",
+    nutritions: {
+      carbohydrates: 14,
+      protein: 1,
+      fat: 0,
+      calories: 57,
+      sugar: 9,
+    },
+  },
+  {
+    name: "Strawberries",
+    title: "Organic Strawberries",
+    price: 34,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 10,
+    description: "Juicy and sweet strawberries, a great source of vitamin C.",
+    nutritions: {
+      carbohydrates: 7,
+      protein: 1,
+      fat: 0,
+      calories: 32,
+      sugar: 4,
+    },
+  },
+  {
+    name: "Blackberries",
+    title: "Organic Blackberries",
+    price: 66,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 11,
+    description:
+      "Tart and flavorful blackberries, packed with antioxidants and phytochemicals.",
+    nutritions: {
+      carbohydrates: 14,
+      protein: 2,
+      fat: 1,
+      calories: 62,
+      sugar: 7,
+    },
+  },
+  {
+    name: "Cherries",
+    title: "Organic Cherries",
     price: 85,
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 1,
-    family: "Musaceae",
-    order: "Zingiberales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 12,
+    description:
+      "Juicy and sweet cherries, a great source of melatonin and anthocyanins.",
     nutritions: {
-      carbohydrates: 22,
+      carbohydrates: 12,
       protein: 1,
-      fat: 0.2,
-      calories: 96,
-      sugar: 17.2,
+      fat: 0,
+      calories: 48,
+      sugar: 9,
     },
   },
   {
-    genus: "Rubus",
-    name: "Blackberry",
-    title: "Blackberry",
-    price: 89,
-    description:
-      " A small, black fruit with a sweet, juicy flavor and a slightly tart finish.",
+    name: "Oats",
+    title: "Organic Rolled Oats",
+    price: 29,
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 64,
-    family: "Rosaceae",
-    order: "Rosales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 13,
+    description:
+      "Heart-healthy rolled oats, perfect for making oatmeal or granola.",
+    nutritions: {
+      carbohydrates: 27,
+      protein: 5,
+      fat: 3,
+      calories: 150,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Lentils",
+    title: "Organic Lentils",
+    price: 38,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 14,
+    description:
+      "Protein-packed lentils, a great addition to soups, salads, or curries.",
+    nutritions: {
+      carbohydrates: 20,
+      protein: 9,
+      fat: 0,
+      calories: 115,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Cauliflower",
+    title: "Fresh Cauliflower",
+    price: 25,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 15,
+    description:
+      "Versatile and healthy cauliflower, a great low-carb substitute for rice or potatoes.",
+    nutritions: {
+      carbohydrates: 5,
+      protein: 2,
+      fat: 0,
+      calories: 25,
+      sugar: 2,
+    },
+  },
+  {
+    name: "Kale",
+    title: "Organic Kale",
+    price: 31,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 16,
+    description:
+      "Nutrient-dense kale, a great source of vitamins and minerals.",
+    nutritions: {
+      carbohydrates: 5,
+      protein: 2,
+      fat: 0,
+      calories: 33,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Grapes",
+    title: "Organic Grapes",
+    price: 38,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 17,
+    description:
+      "Juicy and sweet grapes, a great source of resveratrol and antioxidants.",
+    nutritions: {
+      carbohydrates: 18,
+      protein: 1,
+      fat: 0,
+      calories: 69,
+      sugar: 16,
+    },
+  },
+  {
+    name: "Pears",
+    title: "Organic Pears",
+    price: 26,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 18,
+    description:
+      "Tender and flavorful pears, a great source of fiber and vitamin C.",
+    nutritions: {
+      carbohydrates: 15,
+      protein: 1,
+      fat: 0,
+      calories: 57,
+      sugar: 12,
+    },
+  },
+  {
+    name: "Barley",
+    title: "Organic Barley",
+    price: 38,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 19,
+    description: "Whole grain barley, a great source of fiber and minerals.",
+    nutritions: {
+      carbohydrates: 28,
+      protein: 4,
+      fat: 1,
+      calories: 130,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Mushrooms",
+    title: "Fresh Mushrooms",
+    price: 49,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 20,
+    description:
+      "Meaty and flavorful mushrooms, a great source of protein and B vitamins.",
+    nutritions: {
+      carbohydrates: 3,
+      protein: 3,
+      fat: 0,
+      calories: 15,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Peaches",
+    title: "Organic Peaches",
+    price: 33,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 21,
+    description:
+      "Juicy and sweet peaches, a great source of vitamin A and antioxidants.",
+    nutritions: {
+      carbohydrates: 8,
+      protein: 1,
+      fat: 0,
+      calories: 39,
+      sugar: 7,
+    },
+  },
+  {
+    name: "Pineapple",
+    title: "Organic Pineapple",
+    price: 42,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 22,
+    description:
+      "Tropical and juicy pineapple, a great source of vitamin C and bromelain.",
+    nutritions: {
+      carbohydrates: 13,
+      protein: 1,
+      fat: 0,
+      calories: 52,
+      sugar: 9,
+    },
+  },
+  {
+    name: "Cucumbers",
+    title: "Organic Cucumbers",
+    price: 24,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 23,
+    description:
+      "Refreshing and hydrating cucumbers, a great source of vitamin K and silica.",
+    nutritions: {
+      carbohydrates: 3,
+      protein: 1,
+      fat: 0,
+      calories: 16,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Oranges",
+    title: "Organic Oranges",
+    price: 29,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 24,
+    description:
+      "Juicy and flavorful oranges, a great source of vitamin C and folate.",
     nutritions: {
       carbohydrates: 9,
-      protein: 1.3,
-      fat: 0.4,
-      calories: 40,
-      sugar: 4.5,
+      protein: 1,
+      fat: 0,
+      calories: 62,
+      sugar: 6,
     },
   },
   {
-    genus: "Fragaria",
-    name: "Blueberry",
-    title: "Blueberry",
+    name: "Black Beans",
+    title: "Organic Black Beans",
+    price: 27,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "grain",
+    id: 25,
+    description:
+      "Protein-rich black beans, perfect for making chili or burritos.",
+    nutritions: {
+      carbohydrates: 20,
+      protein: 8,
+      fat: 0,
+      calories: 114,
+      sugar: 1,
+    },
+  },
+  {
+    name: "Bell Peppers",
+    title: "Organic Bell Peppers",
+    price: 33,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 26,
+    description:
+      "Colorful and nutritious bell peppers, a great source of vitamin C and antioxidants.",
+    nutritions: {
+      carbohydrates: 6,
+      protein: 1,
+      fat: 0,
+      calories: 31,
+      sugar: 4,
+    },
+  },
+  {
+    name: "Plums",
+    title: "Organic Plums",
+    price: 38,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 27,
+    description:
+      "Tart and juicy plums, a great source of vitamin C and antioxidants.",
+    nutritions: {
+      carbohydrates: 9,
+      protein: 1,
+      fat: 0,
+      calories: 39,
+      sugar: 7,
+    },
+  },
+  {
+    name: "Eggplants",
+    title: "Organic Eggplants",
+    price: 33,
+    pictureUrl:
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "vegetable",
+    id: 28,
+    description:
+      "Meaty and versatile eggplants, a great source of fiber and antioxidants.",
+    nutritions: {
+      carbohydrates: 6,
+      protein: 1,
+      fat: 0,
+      calories: 25,
+      sugar: 3,
+    },
+  },
+  {
+    name: "Watermelon",
+    title: "Organic Watermelon",
     price: 36,
-    description:
-      "A small, round fruit with a blue or purple skin and a sweet, juicy interior.",
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 33,
-    family: "Rosaceae",
-    order: "Rosales",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 29,
+    description:
+      "Refreshing and hydrating watermelon, a great source of vitamins and antioxidants.",
     nutritions: {
-      carbohydrates: 5.5,
-      protein: 0,
-      fat: 0.4,
-      calories: 29,
-      sugar: 5.4,
+      carbohydrates: 8,
+      protein: 1,
+      fat: 0,
+      calories: 30,
+      sugar: 6,
     },
   },
   {
-    genus: "Prunus",
-    name: "Cherry",
-    title: "Cherry",
-    description:
-      "A small, round fruit with a red or black skin and a sweet or tart flavor.",
-    price: 98,
+    name: "Cantaloupe",
+    title: "Organic Cantaloupe",
+    price: 36,
+
     pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 9,
-    family: "Rosaceae",
-    order: "Rosales",
-    nutritions: {
-      carbohydrates: 12,
-      protein: 1,
-      fat: 0.3,
-      calories: 50,
-      sugar: 8,
-    },
-  },
-  {
-    genus: "Prunus",
-    name: "Cherry",
-    title: "Cherry",
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    category: "fruit",
+    id: 30,
     description:
-      "A small, round fruit with a red or black skin and a sweet or tart flavor.",
-    price: 98,
-    pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 5344,
-    family: "Rosaceae",
-    order: "Rosales",
+      "Sweet and juicy cantaloupe, a great source of vitamins and antioxidants.",
     nutritions: {
-      carbohydrates: 12,
+      carbohydrates: 8,
       protein: 1,
-      fat: 0.3,
-      calories: 50,
-      sugar: 8,
-    },
-  },
-  {
-    genus: "Prunus",
-    name: "Cherry",
-    title: "Cherry",
-    description:
-      "A small, round fruit with a red or black skin and a sweet or tart flavor.",
-    price: 98,
-    pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 333,
-    family: "Rosaceae",
-    order: "Rosales",
-    nutritions: {
-      carbohydrates: 12,
-      protein: 1,
-      fat: 0.3,
-      calories: 50,
-      sugar: 8,
-    },
-  },
-  {
-    genus: "Prunus",
-    name: "Cherry",
-    title: "Cherry",
-    description:
-      "A small, round fruit with a red or black skin and a sweet or tart flavor.",
-    price: 98,
-    pictureUrl:
-      "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id: 234,
-    family: "Rosaceae",
-    order: "Rosales",
-    nutritions: {
-      carbohydrates: 12,
-      protein: 1,
-      fat: 0.3,
-      calories: 50,
-      sugar: 8,
+      fat: 0,
+      calories: 34,
+      sugar: 6,
     },
   },
 ];
 
-export function fakeFetch() {
+const DELAY_TIME = 100;
+
+export function fakeGet(q = "") {
   return new Promise<IItem[]>((res) => {
     setTimeout(() => {
-      res(items);
-    }, 2000);
+      res(items.filter((item) => item.category.includes(q)));
+    }, DELAY_TIME);
   });
 }
 
-export function getItem() {
+export function getItem(
+  id: number | string = Math.ceil(Math.random() * items.length)
+) {
+  const idNumber = +id;
   return new Promise<IItem>((res) => {
     setTimeout(() => {
-      res(items[Math.floor(Math.random() * items.length)]);
-    }, 2000);
+      res(items[idNumber - 1]);
+    }, DELAY_TIME);
   });
 }
 

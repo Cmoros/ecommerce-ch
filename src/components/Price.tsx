@@ -6,6 +6,7 @@ type IProps = TextProps;
 
 const Price = (props: IProps) => {
   const { children } = props;
+  const [int, dec] = children!.toString().split(".");
   return (
     <Text
       as="span"
@@ -16,9 +17,9 @@ const Price = (props: IProps) => {
       color="green"
     >
       <FontAwesomeIcon icon={faDollarSign} />
-      {children}
+      {int}
       <Text as="span" fontSize="sm">
-        .00
+        {dec || ".00"}
       </Text>
     </Text>
   );
