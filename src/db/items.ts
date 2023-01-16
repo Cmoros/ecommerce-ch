@@ -210,4 +210,12 @@ export function fakeFetch() {
   });
 }
 
+export function getItem() {
+  return new Promise<IItem>((res) => {
+    setTimeout(() => {
+      res(items[Math.floor(Math.random() * items.length)]);
+    }, 2000);
+  });
+}
+
 export default items;
