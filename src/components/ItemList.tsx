@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import Item from "./Item";
-import IItem from "types/Item";
+import IItem from "typescript/types/Item";
 
 interface IProps {
   items: IItem[];

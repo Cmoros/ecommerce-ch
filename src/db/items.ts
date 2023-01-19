@@ -1,4 +1,5 @@
-import IItem from "types/Item";
+import IItem from "typescript/types/Item";
+import { searchObjEquality } from "utils";
 
 const items: IItem[] = [
   {
@@ -542,10 +543,10 @@ const items: IItem[] = [
 
 const DELAY_TIME = 100;
 
-export function fakeGet(q = "") {
+export function fakeGet(q: Partial<IItem> = {}) {
   return new Promise<IItem[]>((res) => {
     setTimeout(() => {
-      res(items.filter((item) => item.category.includes(q)));
+      res(items.filter((item) => searchObjEquality<IItem>(item, q)));
     }, DELAY_TIME);
   });
 }
@@ -554,8 +555,10 @@ export function getItem(
   id: number | string = Math.ceil(Math.random() * items.length)
 ) {
   const idNumber = +id;
-  return new Promise<IItem>((res) => {
+  return new Promise<IItem>((res, rej) => {
     setTimeout(() => {
+      if (idNumber <= 0 || idNumber > items.length)
+        return rej(new Error("Product not found"));
       res(items[idNumber - 1]);
     }, DELAY_TIME);
   });

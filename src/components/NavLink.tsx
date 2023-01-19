@@ -7,7 +7,7 @@ const NavLink = ({ to, children }: { to: string; children: ReactNode }) => {
     <Text
       px={1.5}
       py={2}
-      rounded={"md"}
+      rounded="md"
       _hover={{
         bg: "red.400",
       }}

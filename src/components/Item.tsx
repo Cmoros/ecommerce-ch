@@ -8,7 +8,7 @@ import {
   Heading,
   Stack,
 } from "@chakra-ui/react";
-import Item from "types/Item";
+import Item from "typescript/types/Item";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 
