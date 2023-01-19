@@ -1,27 +1,25 @@
 import { Box, Container, VStack } from "@chakra-ui/react";
 import MainHeader from "layout/MainHeader";
-import ItemDetailContainer from "./ItemDetailContainer";
 import { Routes, Route } from "react-router-dom";
 import TestRoute from "pages/TestRoute";
 import Home from "pages/Home";
 import Category from "pages/Category";
+import Detail from "pages/Detail";
 
 const App = () => {
   return (
     <Box>
       <VStack
         minH="100vh"
-        // w="100vw"
         justifyContent="space-between"
         overflowX="hidden"
         padding={0}
       >
         <MainHeader />
-        <Container m="auto" w="full" maxW="container.xl">
-          {/* <p>My Body</p> */}
+        <Container m="auto" w="full" maxW="container.xl" py="10">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route path="/item/:id" element={<Detail />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/test/*" element={<TestRoute />} />
           </Routes>

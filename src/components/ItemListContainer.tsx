@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import IItem, { Category } from "typescript/types/Item";
 
 interface IProps {
-  greeting: string;
   category?: Category;
 }
 
-const ItemListContainer = ({ greeting, category }: IProps) => {
+const ItemListContainer = ({ category }: IProps) => {
   const [items, setItems] = useState<IItem[]>([]);
   useEffect(() => {
     fakeGet(category ? { category } : {}).then((newItems) =>
@@ -19,7 +18,6 @@ const ItemListContainer = ({ greeting, category }: IProps) => {
 
   return (
     <Box>
-      {greeting}
       <ItemList items={items} />
     </Box>
   );

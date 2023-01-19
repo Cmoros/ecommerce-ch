@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Box>
       <Heading as="h1">Home</Heading>
-      <ItemListContainer greeting="" />
+      <ItemListContainer />
     </Box>
   );
 };
