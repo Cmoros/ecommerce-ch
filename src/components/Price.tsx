@@ -10,11 +10,11 @@ const Price = (props: IProps) => {
   return (
     <Text
       as="span"
-      {...props}
       fontWeight="bold"
       letterSpacing={-1}
       fontSize="2xl"
       color="green"
+      {...props}
     >
       <FontAwesomeIcon icon={faDollarSign} />
       {int}

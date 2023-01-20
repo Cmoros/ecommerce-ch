@@ -16,8 +16,7 @@ const ItemList = ({ items }: IProps) => {
         <Item
           item={{
             ...item,
-            stock: 10,
-            initial: 1,
+            quantity: 1,
           }}
           onAdd={() => {
             console.log(`Clicked on ${item.title} with id: ${item.id}`);

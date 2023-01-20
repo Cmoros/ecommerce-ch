@@ -1,44 +1,34 @@
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  ButtonGroup,
-  IconButton,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import { IItemCard, IPropsCard } from "./Item";
+import { ButtonGroup, IconButton, Text, VStack } from "@chakra-ui/react";
+import { IItemCard } from "./Item";
 
 interface IProps {
   stock: IItemCard["stock"];
-  initial: IItemCard["quantity"];
-  onAdd: IPropsCard["onAdd"];
+  quantity: IItemCard["quantity"];
+  onChange: (updated: number) => void;
 }
 
-const ItemCount = ({ stock, initial, onAdd }: IProps) => {
-  const [quantity, setQuantity] = useState(initial);
+const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
   const handleAdd = (toAdd: number) => {
     if (quantity === stock) return;
     if (quantity + toAdd >= stock) {
-      setQuantity(stock);
+      onChange(stock);
       return;
     }
-    setQuantity((old) => old + toAdd);
+    onChange(quantity + 1);
   };
 
   const handleSubstract = (toSubstract: number) => {
     if (quantity === 1) return;
     if (quantity - toSubstract <= 1) {
-      setQuantity(1);
+      onChange(1);
       return;
     }
-    setQuantity((old) => old - toSubstract);
+    onChange(quantity - toSubstract);
   };
 
   return (
-    <VStack w="full" justifyContent="center" spacing={3}>
+    <VStack w="full" h="full" justifyContent="center" spacing={3}>
       <ButtonGroup
         w="full"
         maxW={175}
@@ -50,6 +40,7 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
           icon={<MinusIcon />}
           colorScheme="red"
           aria-label={"minus 1"}
+          size="sm"
           onClick={() => handleSubstract(1)}
           disabled={quantity === 1}
         />
@@ -57,23 +48,14 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
         <IconButton
           icon={<AddIcon />}
           colorScheme="red"
+          size="sm"
           aria-label={"add 1"}
           onClick={() => handleAdd(1)}
           disabled={quantity === stock}
         />
       </ButtonGroup>
-
-      <Button
-        colorScheme="red"
-        textAlign="center"
-        maxW={175}
-        onClick={() => onAdd(quantity)}
-        rightIcon={<FontAwesomeIcon icon={faBasketShopping} />}
-      >
-        Add to Cart
-      </Button>
     </VStack>
   );
 };
 
-export default ItemCount;
+export default CartItemCount;

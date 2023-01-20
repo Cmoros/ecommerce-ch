@@ -6,6 +6,7 @@ const items: IItem[] = [
     name: "Brown Rice",
     title: "Organic Brown Rice",
     price: 47,
+    stock: 20,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -24,6 +25,7 @@ const items: IItem[] = [
     name: "Quinoa",
     title: "Organic Quinoa",
     price: 67,
+    stock: 1,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -42,6 +44,7 @@ const items: IItem[] = [
     name: "Broccoli",
     title: "Fresh Broccoli",
     price: 25,
+    stock: 5,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -60,6 +63,7 @@ const items: IItem[] = [
     name: "Carrots",
     title: "Organic Carrots",
     price: 32,
+    stock: 7,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -77,6 +81,7 @@ const items: IItem[] = [
     name: "Apples",
     title: "Organic Apples",
     price: 25,
+    stock: 2,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -94,6 +99,7 @@ const items: IItem[] = [
     name: "Bananas",
     title: "Organic Bananas",
     price: 14,
+    stock: 4,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -112,6 +118,7 @@ const items: IItem[] = [
     name: "Spinach",
     title: "Organic Spinach",
     price: 33,
+    stock: 17,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -130,6 +137,7 @@ const items: IItem[] = [
     name: "Sweet Potatoes",
     title: "Organic Sweet Potatoes",
     price: 49,
+    stock: 18,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -148,6 +156,7 @@ const items: IItem[] = [
     name: "Blueberries",
     title: "Organic Blueberries",
     price: 56,
+    stock: 20,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -166,6 +175,7 @@ const items: IItem[] = [
     name: "Strawberries",
     title: "Organic Strawberries",
     price: 34,
+    stock: 5,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -183,6 +193,7 @@ const items: IItem[] = [
     name: "Blackberries",
     title: "Organic Blackberries",
     price: 66,
+    stock: 14,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -201,6 +212,7 @@ const items: IItem[] = [
     name: "Cherries",
     title: "Organic Cherries",
     price: 85,
+    stock: 12,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -219,6 +231,7 @@ const items: IItem[] = [
     name: "Oats",
     title: "Organic Rolled Oats",
     price: 29,
+    stock: 18,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -237,6 +250,7 @@ const items: IItem[] = [
     name: "Lentils",
     title: "Organic Lentils",
     price: 38,
+    stock: 10,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -255,6 +269,7 @@ const items: IItem[] = [
     name: "Cauliflower",
     title: "Fresh Cauliflower",
     price: 25,
+    stock: 4,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -273,6 +288,7 @@ const items: IItem[] = [
     name: "Kale",
     title: "Organic Kale",
     price: 31,
+    stock: 1,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -291,6 +307,7 @@ const items: IItem[] = [
     name: "Grapes",
     title: "Organic Grapes",
     price: 38,
+    stock: 20,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -309,6 +326,7 @@ const items: IItem[] = [
     name: "Pears",
     title: "Organic Pears",
     price: 26,
+    stock: 4,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -327,6 +345,7 @@ const items: IItem[] = [
     name: "Barley",
     title: "Organic Barley",
     price: 38,
+    stock: 17,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -344,6 +363,7 @@ const items: IItem[] = [
     name: "Mushrooms",
     title: "Fresh Mushrooms",
     price: 49,
+    stock: 14,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -362,6 +382,7 @@ const items: IItem[] = [
     name: "Peaches",
     title: "Organic Peaches",
     price: 33,
+    stock: 1,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -380,6 +401,7 @@ const items: IItem[] = [
     name: "Pineapple",
     title: "Organic Pineapple",
     price: 42,
+    stock: 18,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -398,6 +420,7 @@ const items: IItem[] = [
     name: "Cucumbers",
     title: "Organic Cucumbers",
     price: 24,
+    stock: 14,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -416,6 +439,7 @@ const items: IItem[] = [
     name: "Oranges",
     title: "Organic Oranges",
     price: 29,
+    stock: 7,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -434,6 +458,7 @@ const items: IItem[] = [
     name: "Black Beans",
     title: "Organic Black Beans",
     price: 27,
+    stock: 18,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "grain",
@@ -452,6 +477,7 @@ const items: IItem[] = [
     name: "Bell Peppers",
     title: "Organic Bell Peppers",
     price: 33,
+    stock: 1,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -470,6 +496,7 @@ const items: IItem[] = [
     name: "Plums",
     title: "Organic Plums",
     price: 38,
+    stock: 20,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -488,6 +515,7 @@ const items: IItem[] = [
     name: "Eggplants",
     title: "Organic Eggplants",
     price: 33,
+    stock: 14,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "vegetable",
@@ -506,6 +534,7 @@ const items: IItem[] = [
     name: "Watermelon",
     title: "Organic Watermelon",
     price: 36,
+    stock: 10,
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     category: "fruit",
@@ -524,6 +553,7 @@ const items: IItem[] = [
     name: "Cantaloupe",
     title: "Organic Cantaloupe",
     price: 36,
+    stock: 10,
 
     pictureUrl:
       "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",

@@ -31,7 +31,7 @@ const ItemDetailContainer = ({ id }: { id: string }) => {
       {!item ? (
         <p>No se encontró el producto</p>
       ) : (
-        <ItemDetail item={{ ...item, stock: 10, initial: 1 }} />
+        <ItemDetail item={{ ...item, quantity: 1 }} />
       )}
     </Box>
   );

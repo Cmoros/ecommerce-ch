@@ -13,7 +13,7 @@ interface IProps {
 const GoToCartButton = ({ quantity, total, onCancel }: IProps) => {
   return (
     <VStack w="full" justifyContent="center" spacing={3}>
-      <Text>You have {quantity} checked for this product</Text>
+      <Text>You have {quantity} of this product in Cart</Text>
       <Text>
         Total: <Price>{total}</Price>
       </Text>
@@ -23,7 +23,6 @@ const GoToCartButton = ({ quantity, total, onCancel }: IProps) => {
         colorScheme="red"
         textAlign="center"
         maxW={175}
-        // onClick={() => onAdd()}
         rightIcon={<FontAwesomeIcon icon={faBasketShopping} />}
       >
         Go to Cart
@@ -35,7 +34,7 @@ const GoToCartButton = ({ quantity, total, onCancel }: IProps) => {
         onClick={onCancel}
         rightIcon={<FontAwesomeIcon icon={faX} />}
       >
-        Cancel
+        Keep Buying
       </Button>
     </VStack>
   );

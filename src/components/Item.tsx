@@ -13,8 +13,7 @@ import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 
 export interface IItemCard extends Item {
-  stock: number;
-  initial: number;
+  quantity: number;
 }
 
 export interface IPropsCard {
@@ -23,7 +22,7 @@ export interface IPropsCard {
 }
 
 const ProductCard = ({ item, onAdd }: IPropsCard) => {
-  const { title, price, pictureUrl, stock, initial, description, id } = item;
+  const { title, price, pictureUrl, stock, quantity, description, id } = item;
   return (
     <Card maxW="sm">
       <CardBody>
@@ -31,7 +30,9 @@ const ProductCard = ({ item, onAdd }: IPropsCard) => {
           <Image src={pictureUrl} alt={title} borderRadius="lg" />
         </Link>
         <Stack mt="6" spacing="3">
-          <Heading size="md">{title}</Heading>
+          <Link to={`/item/${id}`}>
+            <Heading size="md">{title}</Heading>
+          </Link>
           <Text>{description}</Text>
           <Text color="green.500" fontSize="2xl" letterSpacing={-0.5}>
             ${price}
@@ -40,7 +41,7 @@ const ProductCard = ({ item, onAdd }: IPropsCard) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+        <ItemCount stock={stock} initial={quantity} onAdd={onAdd} />
       </CardFooter>
     </Card>
   );

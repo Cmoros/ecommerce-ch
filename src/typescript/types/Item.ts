@@ -12,6 +12,7 @@ export default interface IItem {
   name: string;
   title: string;
   price: number;
+  stock: number;
   pictureUrl: string;
   category: Category;
   id: number;

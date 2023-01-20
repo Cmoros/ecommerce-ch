@@ -11,7 +11,8 @@ import {
   VStack,
   HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import cartContext from "context/cartContext";
+import { useContext, useState } from "react";
 import GoToCartButton from "./GoToCartButton";
 import { IItemCard } from "./Item";
 import ItemCount from "./ItemCount";
@@ -23,29 +24,44 @@ interface IProps {
 
 const ProductDetailPage = ({ item }: IProps) => {
   const [isNotMobile] = useMediaQuery("(min-width: 768px)");
-  const { carbohydrates, protein, fat, calories, sugar } = item.nutritions;
-  const [quantityToAdd, setQuantityToAdd] = useState(1);
-  const [isReadyToBuy, setReadyToBuy] = useState(false);
+  const { getItem } = useContext(cartContext);
 
-  const onAdd = (quantityToAdd: number) => {
-    setQuantityToAdd(quantityToAdd);
+  const [isReadyToBuy, setReadyToBuy] = useState(false);
+  const { addItem } = useContext(cartContext);
+
+  const { carbohydrates, protein, fat, calories, sugar } = item.nutritions;
+
+  const onAdd = (quantityToAdd: number): void => {
+    addItem({ ...item, quantity: quantityToAdd });
     setReadyToBuy(true);
   };
 
-  const onCancel = () => {
+  const onCancel = (): void => {
     setReadyToBuy(false);
   };
 
-  const ButtonToRender = () =>
-    isReadyToBuy ? (
-      <GoToCartButton
-        quantity={quantityToAdd}
-        total={quantityToAdd * item.price}
-        onCancel={onCancel}
-      />
-    ) : (
-      <ItemCount initial={quantityToAdd} stock={10} onAdd={onAdd} />
+  const ButtonToRender = () => {
+    const cartItem = getItem(item.id);
+    const quantityAdded = cartItem ? cartItem.quantity : 0;
+    if (isReadyToBuy) {
+      if (!quantityAdded) {
+        console.warn(`☢Possible Bug☢: Item not found after adding`);
+      }
+      return (
+        <GoToCartButton
+          quantity={quantityAdded}
+          total={quantityAdded * item.price}
+          onCancel={onCancel}
+        />
+      );
+    }
+    return (
+      <>
+        <Text as="span">{quantityAdded || "None"} in Cart</Text>
+        <ItemCount initial={1} stock={item.stock} onAdd={onAdd} />
+      </>
     );
+  };
 
   return (
     <Flex direction="column" align="center" mx="auto" px={4}>
@@ -54,7 +70,8 @@ const ProductDetailPage = ({ item }: IProps) => {
           src={item.pictureUrl}
           alt={item.title}
           w="100%"
-          h={["400px", "500px"]}
+          h={[`400px`, `500px`]}
+          maxH="50vh"
           objectFit="cover"
         />
       </Box>
