@@ -11,8 +11,8 @@ import {
   VStack,
   HStack,
 } from "@chakra-ui/react";
-import cartContext from "context/cartContext";
-import { useContext, useState } from "react";
+import { useCartContext } from "context/cartContext";
+import { useState } from "react";
 import GoToCartButton from "./GoToCartButton";
 import { IItemCard } from "./Item";
 import ItemCount from "./ItemCount";
@@ -24,10 +24,9 @@ interface IProps {
 
 const ProductDetailPage = ({ item }: IProps) => {
   const [isNotMobile] = useMediaQuery("(min-width: 768px)");
-  const { getItem } = useContext(cartContext);
+  const { getItem, addItem } = useCartContext();
 
   const [isReadyToBuy, setReadyToBuy] = useState(false);
-  const { addItem } = useContext(cartContext);
 
   const { carbohydrates, protein, fat, calories, sugar } = item.nutritions;
 

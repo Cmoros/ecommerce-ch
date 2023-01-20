@@ -2,29 +2,21 @@ import { Box } from "@chakra-ui/react";
 import { getItem } from "db/items";
 import { useEffect, useState } from "react";
 import IItem from "typescript/types/Item";
-import FullSpinner from "./FullSpinner";
-import ItemDetail from "./ItemDetail";
+import FullSpinner from "../components/FullSpinner";
+import ItemDetail from "../components/ItemDetail";
 
 const ItemDetailContainer = ({ id }: { id: string }) => {
   const [item, setItem] = useState<IItem | null>(null);
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    try {
-      getItem(id).then((newItem) => setItem(newItem));
-    } catch (e: unknown) {
-      console.error("Error la búsqueda del item:", e);
-    } finally {
-      setLoading(false);
-    }
+    getItem(id)
+      .then((newItem) => setItem(newItem))
+      .catch((e: unknown) => console.error("Error consiguiendo el item", e))
+      .finally(() => setLoading(false));
     return () => setLoading(false);
   }, [id]);
-  if (isLoading)
-    return (
-      <Box>
-        <FullSpinner />
-      </Box>
-    );
+  if (isLoading) return <FullSpinner />;
 
   return (
     <Box>

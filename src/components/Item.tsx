@@ -27,7 +27,13 @@ const ProductCard = ({ item, onAdd }: IPropsCard) => {
     <Card maxW="sm">
       <CardBody>
         <Link to={`/item/${id}`}>
-          <Image src={pictureUrl} alt={title} borderRadius="lg" />
+          <Image
+            src={pictureUrl}
+            alt={title}
+            borderRadius="lg"
+            minH="168px"
+            objectFit="cover"
+          />
         </Link>
         <Stack mt="6" spacing="3">
           <Link to={`/item/${id}`}>

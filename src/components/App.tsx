@@ -9,7 +9,7 @@ import Cart from "pages/Cart";
 
 const App = () => {
   return (
-    <Box>
+    <Box bg="blue.50">
       <VStack
         minH="100vh"
         justifyContent="space-between"

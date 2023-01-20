@@ -1,5 +1,5 @@
 import { Box, Heading } from "@chakra-ui/react";
-import ItemListContainer from "components/ItemListContainer";
+import ItemListContainer from "layout/ItemListContainer";
 
 const Home = () => {
   return (

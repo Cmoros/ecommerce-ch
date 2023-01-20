@@ -1,5 +1,5 @@
 import { IItemCard } from "components/Item";
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 const cartContext = createContext({
   getCartList: (): IItemCard[] => {
@@ -140,3 +140,5 @@ export const CartContextProvider = ({ children, initialState }: IProps) => {
 };
 
 export default cartContext;
+
+export const useCartContext = () => useContext(cartContext);

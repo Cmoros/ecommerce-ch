@@ -1,4 +1,4 @@
-import ItemDetailContainer from "components/ItemDetailContainer";
+import ItemDetailContainer from "layout/ItemDetailContainer";
 import { useParams } from "react-router-dom";
 
 const Detail = () => {

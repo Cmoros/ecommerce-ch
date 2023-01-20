@@ -1,3 +1,4 @@
+import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Alert,
   AlertIcon,
@@ -5,27 +6,66 @@ import {
   Center,
   Container,
   Heading,
+  Text,
   VStack,
+  Link as ChakraLink,
+  Flex,
 } from "@chakra-ui/react";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartItem from "components/CartItem";
 import Price from "components/Price";
-import cartContext from "context/cartContext";
-import { useContext } from "react";
+import { useCartContext } from "context/cartContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { getCartList, getTotalPrice } = useContext(cartContext);
+  const { getCartList, getTotalPrice, clear } = useCartContext();
   const cartList = getCartList();
   if (cartList.length === 0)
     return (
-      <Center>
+      <Center flexDir="column" gap={5}>
         <Alert status="info" fontSize="2xl">
           <AlertIcon />
           Cart is Empty... For Now
         </Alert>
+        <Text fontSize="2xl">
+          Go back{" "}
+          <ChakraLink as={Link} to="/" color="red.700">
+            Home Page <FontAwesomeIcon icon={faHome} />
+          </ChakraLink>
+        </Text>
       </Center>
     );
+
   return (
-    <Container maxW="container.lg">
+    <Container
+      maxW="container.xl"
+      borderWidth="1px"
+      borderColor="red.400"
+      borderRadius="2xl"
+      p="10"
+    >
+      <Flex
+        w="full"
+        mb="8"
+        textAlign="center"
+        position="relative"
+        flexDir={{ base: "column-reverse", md: "row" }}
+        gap="3"
+      >
+        <Button
+          position={{ md: "absolute", base: "relative" }}
+          right="0"
+          colorScheme="orange"
+          alignSelf="flex-end"
+          title="Empty Cart"
+          rightIcon={<DeleteIcon />}
+          onClick={clear}
+        >
+          Throw Basket
+        </Button>
+        <Heading>Your Basket</Heading>
+      </Flex>
       <VStack spacing="4" gap={2}>
         {cartList.map((item) => (
           <CartItem item={item} key={item.id} />
