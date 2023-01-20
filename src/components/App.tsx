@@ -5,6 +5,7 @@ import TestRoute from "pages/TestRoute";
 import Home from "pages/Home";
 import Category from "pages/Category";
 import Detail from "pages/Detail";
+import Cart from "pages/Cart";
 
 const App = () => {
   return (
@@ -19,8 +20,10 @@ const App = () => {
         <Container m="auto" w="full" maxW="container.xl" py="10">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/item/:id" element={<Detail />} />
             <Route path="/category/:id" element={<Category />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/test/*" element={<TestRoute />} />
           </Routes>
         </Container>

@@ -19,7 +19,7 @@ export interface IItemCard extends Item {
 
 export interface IPropsCard {
   item: IItemCard;
-  onAdd: () => void;
+  onAdd: (quantityToAdd: number) => void;
 }
 
 const ProductCard = ({ item, onAdd }: IPropsCard) => {

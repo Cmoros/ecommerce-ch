@@ -64,10 +64,10 @@ const ItemCount = ({
         colorScheme="red"
         textAlign="center"
         maxW={175}
-        onClick={onAdd}
+        onClick={() => onAdd(quantity)}
         rightIcon={<FontAwesomeIcon icon={faBasketShopping} />}
       >
-        Agregar al Carrito
+        Add to Cart
       </Button>
     </VStack>
   );

@@ -11,6 +11,8 @@ import {
   VStack,
   HStack,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import GoToCartButton from "./GoToCartButton";
 import { IItemCard } from "./Item";
 import ItemCount from "./ItemCount";
 import Price from "./Price";
@@ -22,6 +24,29 @@ interface IProps {
 const ProductDetailPage = ({ item }: IProps) => {
   const [isNotMobile] = useMediaQuery("(min-width: 768px)");
   const { carbohydrates, protein, fat, calories, sugar } = item.nutritions;
+  const [quantityToAdd, setQuantityToAdd] = useState(1);
+  const [isReadyToBuy, setReadyToBuy] = useState(false);
+
+  const onAdd = (quantityToAdd: number) => {
+    setQuantityToAdd(quantityToAdd);
+    setReadyToBuy(true);
+  };
+
+  const onCancel = () => {
+    setReadyToBuy(false);
+  };
+
+  const ButtonToRender = () =>
+    isReadyToBuy ? (
+      <GoToCartButton
+        quantity={quantityToAdd}
+        total={quantityToAdd * item.price}
+        onCancel={onCancel}
+      />
+    ) : (
+      <ItemCount initial={quantityToAdd} stock={10} onAdd={onAdd} />
+    );
+
   return (
     <Flex direction="column" align="center" mx="auto" px={4}>
       <Box w="100%" mb={4}>
@@ -78,8 +103,7 @@ const ProductDetailPage = ({ item }: IProps) => {
               Out of Stock
             </Badge>
           ) : (
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            <ItemCount initial={1} onAdd={() => {}} stock={item.stock} />
+            <ButtonToRender />
           )}
         </VStack>
       </Stack>
