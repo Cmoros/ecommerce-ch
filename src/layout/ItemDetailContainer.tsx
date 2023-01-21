@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { getItem } from "db/items";
+import { getItemById } from "db/firebase";
 import { useEffect, useState } from "react";
 import IItem from "typescript/types/Item";
 import FullSpinner from "../components/FullSpinner";
@@ -10,7 +10,7 @@ const ItemDetailContainer = ({ id }: { id: string }) => {
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    getItem(id)
+    getItemById(id)
       .then((newItem) => setItem(newItem))
       .catch((e: unknown) => console.error("Error consiguiendo el item", e))
       .finally(() => setLoading(false));

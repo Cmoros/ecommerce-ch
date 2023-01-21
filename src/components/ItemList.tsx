@@ -1,12 +1,15 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import Item from "./Item";
 import IItem from "typescript/types/Item";
+import { useCartContext } from "context/cartContext";
 
 interface IProps {
   items: IItem[];
 }
 
 const ItemList = ({ items }: IProps) => {
+  const { addItem } = useCartContext();
+
   return (
     <SimpleGrid
       spacing={4}
@@ -18,8 +21,8 @@ const ItemList = ({ items }: IProps) => {
             ...item,
             quantity: 1,
           }}
-          onAdd={() => {
-            console.log(`Clicked on ${item.title} with id: ${item.id}`);
+          onAdd={(quantityToAdd: number) => {
+            addItem({ ...item, quantity: quantityToAdd });
           }}
           key={item.id}
         />

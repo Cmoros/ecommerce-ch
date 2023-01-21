@@ -11,8 +11,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { Link as ChakraLink } from "@chakra-ui/react";
-import cartContext from "context/cartContext";
-import { useContext } from "react";
+import { useCartContext } from "context/cartContext";
 import { Link } from "react-router-dom";
 import CartItemCount from "./CartItemCount";
 import { IItemCard } from "./Item";
@@ -23,17 +22,17 @@ interface IProps {
 }
 
 const CartItem = ({ item }: IProps) => {
-  const { updateQuantity, removeItem } = useContext(cartContext);
+  const { updateQuantity, removeItem } = useCartContext();
 
   const { id, title, price, pictureUrl, quantity, stock } = item;
 
-  const onChangeQuantity = (updated: number) => {
+  const onChangeQuantity = (updated: number): void => {
     updateQuantity(id, updated);
   };
 
   return (
     <Card
-      direction="row"
+      direction={{ base: "column", sm: "row" }}
       size="sm"
       overflow="hidden"
       variant="outline"
@@ -41,7 +40,8 @@ const CartItem = ({ item }: IProps) => {
     >
       <Image
         objectFit="cover"
-        maxW="200px"
+        w={{ base: "full", sm: "200px" }}
+        h={{ base: "125px", sm: "full" }}
         src={pictureUrl}
         alt={title}
         minW="0"

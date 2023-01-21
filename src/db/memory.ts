@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import IItem from "typescript/types/Item";
 import { searchObjEquality } from "utils";
 
-export const DEFAULT_PICTURE_URL =
+const DEFAULT_PICTURE_URL =
   "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
 
 const items: IItem[] = [
@@ -575,7 +577,7 @@ const items: IItem[] = [
 
 const DELAY_TIME = 500;
 
-export function fakeGet(q: Partial<IItem> = {}) {
+function fakeGet(q: Partial<IItem> = {}) {
   return new Promise<IItem[]>((res) => {
     setTimeout(() => {
       res(items.filter((item) => searchObjEquality<IItem>(item, q)));
@@ -583,7 +585,7 @@ export function fakeGet(q: Partial<IItem> = {}) {
   });
 }
 
-export function getItem(
+function getItem(
   id: number | string = Math.ceil(Math.random() * items.length)
 ) {
   const idNumber = +id;
@@ -595,5 +597,3 @@ export function getItem(
     }, DELAY_TIME);
   });
 }
-
-export default items;

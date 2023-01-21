@@ -15,7 +15,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Exercise:
 
-![Exercise 10](/consignas/Entrega10.png)
+![Exercise 11_A](/consignas/Entrega11/Entrega11_1.png)
+![Exercise 11_B](/consignas/Entrega11/Entrega11_2.png)
 
 ### Prerequisites
 

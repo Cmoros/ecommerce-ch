@@ -20,6 +20,7 @@ const NavBar = () => {
             {label}
           </NavLink>
         ))}
+        <NavLink to="/test">Test</NavLink>
       </HStack>
       <Box>
         <CartWidget />

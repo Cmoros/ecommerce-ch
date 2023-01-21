@@ -12,7 +12,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useCartContext } from "context/cartContext";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import GoToCartButton from "./GoToCartButton";
 import { IItemCard } from "./Item";
 import ItemCount from "./ItemCount";
@@ -22,7 +22,7 @@ interface IProps {
   item: IItemCard;
 }
 
-const ProductDetailPage = ({ item }: IProps) => {
+const ItemDetail = ({ item }: IProps) => {
   const [isNotMobile] = useMediaQuery("(min-width: 768px)");
   const { getItem, addItem } = useCartContext();
 
@@ -35,9 +35,9 @@ const ProductDetailPage = ({ item }: IProps) => {
     setReadyToBuy(true);
   };
 
-  const onCancel = (): void => {
+  const onCancel = useCallback((): void => {
     setReadyToBuy(false);
-  };
+  }, []);
 
   const ButtonToRender = () => {
     const cartItem = getItem(item.id);
@@ -127,4 +127,4 @@ const ProductDetailPage = ({ item }: IProps) => {
   );
 };
 
-export default ProductDetailPage;
+export default ItemDetail;

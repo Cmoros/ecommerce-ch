@@ -10,6 +10,7 @@ import {
   VStack,
   Link as ChakraLink,
   Flex,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,7 +44,7 @@ const Cart = () => {
       borderWidth="1px"
       borderColor="red.400"
       borderRadius="2xl"
-      p="10"
+      p="calc(2px + 2vw)"
     >
       <Flex
         w="full"
@@ -66,11 +67,11 @@ const Cart = () => {
         </Button>
         <Heading>Your Basket</Heading>
       </Flex>
-      <VStack spacing="4" gap={2}>
+      <SimpleGrid spacing="4" gap={4} columns={{ base: 1, lg: 2 }}>
         {cartList.map((item) => (
           <CartItem item={item} key={item.id} />
         ))}
-      </VStack>
+      </SimpleGrid>
       <Center mt="10">
         <VStack gap="2">
           <Heading fontSize="2xl" gap="5" display="flex">

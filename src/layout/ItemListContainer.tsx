@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import ItemList from "../components/ItemList";
-import { fakeGet } from "db/items";
 import { useEffect, useState } from "react";
 import IItem, { Category } from "typescript/types/Item";
 import FullSpinner from "../components/FullSpinner";
+import { getItemsByCategory } from "db/firebase";
 
 interface IProps {
   category?: Category;
@@ -13,9 +13,8 @@ const ItemListContainer = ({ category }: IProps) => {
   const [items, setItems] = useState<IItem[]>([]);
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    const queryCategory = category ? { category } : {};
     setLoading(true);
-    fakeGet(queryCategory)
+    getItemsByCategory(category || "")
       .then((newItems) => {
         setItems(newItems);
       })

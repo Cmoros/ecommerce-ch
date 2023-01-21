@@ -6,9 +6,9 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBasketShopping, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { IItemCard, IPropsCard } from "./Item";
 
 interface IProps {
@@ -17,8 +17,31 @@ interface IProps {
   onAdd: IPropsCard["onAdd"];
 }
 
+const defaultStyles = {
+  colorScheme: "red",
+  rightIcon: <FontAwesomeIcon icon={faBasketShopping} />,
+};
+
+const addedStyles = {
+  colorScheme: "green",
+  rightIcon: <FontAwesomeIcon icon={faCheck} />,
+};
+
 const ItemCount = ({ stock, initial, onAdd }: IProps) => {
   const [quantity, setQuantity] = useState(initial);
+  const [wasAdded, setAdded] = useState(false);
+  const styles = wasAdded ? addedStyles : defaultStyles;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const timeout = useRef<NodeJS.Timeout>(setTimeout(() => {}));
+
+  const handleAdded = useCallback(() => {
+    setAdded(true);
+    clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => {
+      setAdded(false);
+    }, 2000);
+  }, []);
+
   const handleAdd = (toAdd: number) => {
     if (quantity === stock) return;
     if (quantity + toAdd >= stock) {
@@ -64,13 +87,15 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
       </ButtonGroup>
 
       <Button
-        colorScheme="red"
+        {...styles}
         textAlign="center"
         maxW={175}
-        onClick={() => onAdd(quantity)}
-        rightIcon={<FontAwesomeIcon icon={faBasketShopping} />}
+        onClick={() => {
+          handleAdded();
+          onAdd(quantity);
+        }}
       >
-        Add to Cart
+        {wasAdded ? "Added to Cart" : "Add to Cart"}
       </Button>
     </VStack>
   );

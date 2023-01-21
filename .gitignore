@@ -1,6 +1,7 @@
 dist
 dist-ssr
 *.local
+fillDB.js
 
 # dependencies
 /node_modules
