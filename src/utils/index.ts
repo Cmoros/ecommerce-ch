@@ -44,7 +44,13 @@ export function searchObjEquality<T>(
   return true;
 }
 
-const algo = {};
-if (searchObjEquality(true, algo)) {
-  algo;
-}
+export const getDataFromForm = (
+  form: HTMLFormElement
+): Record<string, string> => {
+  const formData: Record<string, string> = {};
+  for (const input of form) {
+    if (!(input instanceof HTMLInputElement)) continue;
+    formData[input.name] = input.value;
+  }
+  return formData;
+};

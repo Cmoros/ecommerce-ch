@@ -15,7 +15,11 @@ export default interface IItem {
   stock: number;
   pictureUrl: string;
   category: Category;
-  id: number;
+  id: string;
   description: string;
   nutritions: Nutritions;
+}
+
+export interface IItemCard extends IItem {
+  quantity: number;
 }

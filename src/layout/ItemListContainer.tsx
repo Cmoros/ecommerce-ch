@@ -3,7 +3,7 @@ import ItemList from "../components/ItemList";
 import { useEffect, useState } from "react";
 import IItem, { Category } from "typescript/types/Item";
 import FullSpinner from "../components/FullSpinner";
-import { getItemsByCategory } from "db/firebase";
+import { getItemsByCategory } from "services/itemService";
 
 interface IProps {
   category?: Category;

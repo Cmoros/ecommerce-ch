@@ -20,8 +20,13 @@ import { useCartContext } from "context/cartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { getCartList, getTotalPrice, clear } = useCartContext();
+  const { getCartList, getTotalPrice, clear, setReadyToPay } = useCartContext();
   const cartList = getCartList();
+
+  const handlePay = (): void => {
+    setReadyToPay(true);
+  };
+
   if (cartList.length === 0)
     return (
       <Center flexDir="column" gap={5}>
@@ -77,7 +82,11 @@ const Cart = () => {
           <Heading fontSize="2xl" gap="5" display="flex">
             Total: <Price>{getTotalPrice()}</Price>
           </Heading>
-          <Button colorScheme="red">Pay Now</Button>
+          <Link to="/checkout">
+            <Button colorScheme="red" onClick={handlePay}>
+              Pay Now
+            </Button>
+          </Link>
         </VStack>
       </Center>
     </Container>

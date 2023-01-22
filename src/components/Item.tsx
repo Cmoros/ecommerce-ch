@@ -7,21 +7,19 @@ import {
   Image,
   Heading,
   Stack,
+  Badge,
+  Center,
 } from "@chakra-ui/react";
-import Item from "typescript/types/Item";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
-
-export interface IItemCard extends Item {
-  quantity: number;
-}
+import { IItemCard } from "../typescript/types/Item";
 
 export interface IPropsCard {
   item: IItemCard;
   onAdd: (quantityToAdd: number) => void;
 }
 
-const ProductCard = ({ item, onAdd }: IPropsCard) => {
+const Item = ({ item, onAdd }: IPropsCard) => {
   const { title, price, pictureUrl, stock, quantity, description, id } = item;
   return (
     <Card maxW="sm">
@@ -47,10 +45,18 @@ const ProductCard = ({ item, onAdd }: IPropsCard) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ItemCount stock={stock} initial={quantity} onAdd={onAdd} />
+        {item.stock === 0 ? (
+          <Center w="full" h="full">
+            <Badge colorScheme="red" mb={4} fontSize="lg">
+              Out of Stock
+            </Badge>
+          </Center>
+        ) : (
+          <ItemCount stock={stock} initial={quantity} onAdd={onAdd} />
+        )}
       </CardFooter>
     </Card>
   );
 };
 
-export default ProductCard;
+export default Item;

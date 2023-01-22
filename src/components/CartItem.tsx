@@ -14,7 +14,7 @@ import { Link as ChakraLink } from "@chakra-ui/react";
 import { useCartContext } from "context/cartContext";
 import { Link } from "react-router-dom";
 import CartItemCount from "./CartItemCount";
-import { IItemCard } from "./Item";
+import { IItemCard } from "../typescript/types/Item";
 import Price from "./Price";
 
 interface IProps {

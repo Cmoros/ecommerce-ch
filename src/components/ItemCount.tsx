@@ -9,7 +9,8 @@ import {
 import { faBasketShopping, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useRef, useState } from "react";
-import { IItemCard, IPropsCard } from "./Item";
+import { IPropsCard } from "./Item";
+import { IItemCard } from "../typescript/types/Item";
 
 interface IProps {
   stock: IItemCard["stock"];

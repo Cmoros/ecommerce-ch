@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { getItemById } from "db/firebase";
+import { getItemById } from "services/itemService";
 import { useEffect, useState } from "react";
 import IItem from "typescript/types/Item";
 import FullSpinner from "../components/FullSpinner";

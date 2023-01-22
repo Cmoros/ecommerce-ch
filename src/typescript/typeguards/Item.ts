@@ -6,12 +6,5 @@ export function checkCategory(toCheck: unknown): toCheck is Category {
 }
 
 export function checkIsItem(toCheck: unknown): toCheck is IItem {
-  // if (typeof toCheck === "object" && toCheck != null) {
-  //   if (id) {
-  //     (toCheck as { id: string })["id"] = id;
-  //   }
-  //   return true;
-  // }
-  // return false;
   return typeof toCheck === "object" && toCheck != null;
 }

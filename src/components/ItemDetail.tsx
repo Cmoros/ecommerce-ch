@@ -14,7 +14,7 @@ import {
 import { useCartContext } from "context/cartContext";
 import { useCallback, useState } from "react";
 import GoToCartButton from "./GoToCartButton";
-import { IItemCard } from "./Item";
+import { IItemCard } from "../typescript/types/Item";
 import ItemCount from "./ItemCount";
 import Price from "./Price";
 
@@ -115,7 +115,7 @@ const ItemDetail = ({ item }: IProps) => {
             Price: <Price ml={2}>{item.price}</Price>
           </Text>
           {item.stock === 0 ? (
-            <Badge colorScheme="red" mb={4}>
+            <Badge colorScheme="red" mb={4} fontSize="xl">
               Out of Stock
             </Badge>
           ) : (

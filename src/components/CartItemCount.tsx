@@ -1,6 +1,6 @@
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { ButtonGroup, IconButton, Text, VStack } from "@chakra-ui/react";
-import { IItemCard } from "./Item";
+import { IItemCard } from "../typescript/types/Item";
 
 interface IProps {
   stock: IItemCard["stock"];
