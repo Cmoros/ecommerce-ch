@@ -34,7 +34,7 @@ function MainHeader() {
         justifyContent={"space-between"}
         w="full"
       >
-        <HStack spacing={8} alignItems={"center"} w="full">
+        <HStack alignItems={"center"} w="full" gap="2vw">
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -65,7 +65,7 @@ function MainHeader() {
       </Flex>
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
+          <Stack as={"nav"}>
             <Link to={"/home"}>Home</Link>
             {getCategories().map(({ category, label }) => (
               <Link key={label} to={`/category/${category}`}>

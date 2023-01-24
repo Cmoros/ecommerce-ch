@@ -5,7 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { CartContextProvider } from "context/cartContext";
 import {} from "./db/firebase";
 import { CategoryContextProvider } from "context/categoryContext";
-import { CacheProvider } from "context/localStorageContext";
+import { CacheProvider } from "context/cacheContext";
+import { AuthProvider } from "context/authContext";
 
 const container = document.getElementById("root") as HTMLDivElement;
 const root = createRoot(container);
@@ -13,13 +14,15 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <ChakraProvider>
-      <CategoryContextProvider>
-        <CartContextProvider>
-          <CacheProvider>
-            <App />
-          </CacheProvider>
-        </CartContextProvider>
-      </CategoryContextProvider>
+      <AuthProvider>
+        <CategoryContextProvider>
+          <CartContextProvider>
+            <CacheProvider>
+              <App />
+            </CacheProvider>
+          </CartContextProvider>
+        </CategoryContextProvider>
+      </AuthProvider>
     </ChakraProvider>
   </BrowserRouter>
 );
