@@ -5,7 +5,6 @@ import {
   getAuth,
   getRedirectResult,
   GoogleAuthProvider,
-  OAuthCredential,
   signInWithRedirect,
   UserCredential,
 } from "firebase/auth";
@@ -41,19 +40,22 @@ export const userFromResult = (
   // This gives you a Google Access Token. You can use it to access Google APIs.
   const credential = GoogleAuthProvider.credentialFromResult(result);
 
-  if (!credential) throw new Error("Error: No credential found");
+  if (!credential?.accessToken)
+    throw new Error("Error: No credential  or token found");
+
   // const token = credential.accessToken;
   // The signed-in user info.
   const { email, displayName, phoneNumber } = result.user;
 
-  return [
-    {
-      email: email || "defaultEmail",
-      name: displayName || "defaultName",
-      phone: phoneNumber || "defaultPhone",
-    },
-    result,
-  ];
+  const currentUser: Client & Required<Pick<Client, "token">> = {
+    email: email || "defaultEmail",
+    name: displayName || "defaultName",
+    phone: phoneNumber || "defaultPhone",
+    token: credential.accessToken,
+    likes: [],
+  };
+
+  return [currentUser, result];
 };
 
 export const db = getFirestore(app);

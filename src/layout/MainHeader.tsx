@@ -21,7 +21,7 @@ function MainHeader() {
     <Box
       as="header"
       bg={"red.500"}
-      zIndex="dropdown"
+      zIndex="sticky"
       px={4}
       w="full"
       color="white"

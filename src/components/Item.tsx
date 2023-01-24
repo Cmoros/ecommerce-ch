@@ -14,13 +14,16 @@ import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { IItemCard } from "../typescript/types/Item";
 import { memo, useCallback } from "react";
+import FavoriteButton from "./FavoriteButton";
 
 export interface IPropsCard {
   item: IItemCard;
   addItem: (newItem: IItemCard) => void;
+  onLike: (id: IItemCard["id"], liked: boolean) => void;
+  liked: boolean;
 }
 
-const Item = ({ item, addItem }: IPropsCard) => {
+const Item = ({ item, addItem, onLike, liked }: IPropsCard) => {
   console.log("rerender item", item.id);
   const { title, price, pictureUrl, stock, quantity, description, id } = item;
 
@@ -30,8 +33,14 @@ const Item = ({ item, addItem }: IPropsCard) => {
     },
     [addItem, item]
   );
+
+  const handleLike = (liked: boolean): void => {
+    onLike(item.id, liked);
+  };
+
   return (
-    <Card size="sm">
+    <Card size="sm" position="relative">
+      <FavoriteButton active={liked} onLike={handleLike} />
       <CardBody>
         <Link to={`/item/${id}`}>
           <Image

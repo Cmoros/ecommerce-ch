@@ -1,8 +1,9 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import Item from "./Item";
 import IItem, { IItemCard } from "typescript/types/Item";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useCartContext } from "context/cartContext";
+import { useAuthContext } from "context/authContext";
 
 interface IProps {
   items: IItem[];
@@ -12,9 +13,22 @@ interface IProps {
 const ItemList = ({ items }: IProps) => {
   console.log("rerender itemlist");
   const { addItem } = useCartContext();
+  const { addLike, removeLike, getLikeList } = useAuthContext();
+  const likeSet = useMemo(() => new Set([...getLikeList()]), [getLikeList]);
   const itemsToPass = useMemo(
     () => items.map((item) => ({ ...item, quantity: 1 })),
     [items]
+  );
+
+  const onLike = useCallback(
+    (id: IItem["id"], liked: boolean): void => {
+      if (liked) {
+        addLike(id);
+      } else {
+        removeLike(id);
+      }
+    },
+    [addLike, removeLike]
   );
   // const handleAddItem = useCallback(() => addItem, [addItem]);
   return (
@@ -23,7 +37,13 @@ const ItemList = ({ items }: IProps) => {
       templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
     >
       {itemsToPass.map((item) => (
-        <Item item={item} addItem={addItem} key={item.id} />
+        <Item
+          item={item}
+          addItem={addItem}
+          onLike={onLike}
+          key={item.id}
+          liked={likeSet.has(item.id)}
+        />
       ))}
     </SimpleGrid>
   );

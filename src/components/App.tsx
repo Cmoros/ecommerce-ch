@@ -8,6 +8,7 @@ import Detail from "pages/Detail";
 import Cart from "pages/Cart";
 import Checkout from "pages/Checkout";
 import NotFoundPage from "pages/404";
+import WishList from "pages/WishList";
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
                 <Route path="/category/:id" element={<Category />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/wishlist" element={<WishList />} />
                 <Route path="/test/*" element={<TestRoute />} />
                 <Route
                   path="/*"

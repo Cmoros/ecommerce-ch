@@ -1,18 +1,15 @@
-import { Alert, Box, Container, Link as ChakraLink } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import FullSpinner from "components/FullSpinner";
 import { useAuthContext } from "context/authContext";
 import { useCartContext } from "context/cartContext";
-import { getResults } from "db/firebase";
 import CheckoutForm from "layout/CheckoutForm";
 import PayWindow from "layout/PayWindow";
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Client, defaultUser } from "typescript/types/Client";
+import { Client } from "typescript/types/Client";
 
 const Checkout = () => {
-  const { getReadyToPay, setReadyToPay } = useCartContext();
-  const { isAuthenticated, getUserInfo, login, logout, isAuthtenticating } =
-    useAuthContext();
+  const { setReadyToPay } = useCartContext();
+  const { isAuthenticated, getUserInfo, isAuthtenticating } = useAuthContext();
   const [user, setUser] = useState<Client | null>(null);
 
   useEffect(() => {
@@ -41,21 +38,11 @@ const Checkout = () => {
 
   return (
     <Container>
-      {
-        // !getReadyToPay() ? (
-        //   <Box>
-        //     <Alert>You can only access this page from cart!</Alert>
-        //     <ChakraLink as={Link} to="/cart">
-        //       Go back to cart{" "}
-        //     </ChakraLink>
-        //   </Box>
-        // ) :
-        !user ? (
-          <CheckoutForm onSubmit={handleSubmit} />
-        ) : (
-          <PayWindow user={user} />
-        )
-      }
+      {!user ? (
+        <CheckoutForm onSubmit={handleSubmit} />
+      ) : (
+        <PayWindow user={user} />
+      )}
     </Container>
   );
 };

@@ -6,22 +6,13 @@ import {
   VStack,
   Center,
   Text,
-  useDisclosure,
-  Box,
-  useToast,
   Image,
 } from "@chakra-ui/react";
-import FullSpinner from "components/FullSpinner";
-import Price from "components/Price";
 import { useAuthContext } from "context/authContext";
-import { useCartContext } from "context/cartContext";
-import { FormEvent, useCallback, useEffect, useState } from "react";
-import { addNewPurchase, PrePurchase } from "services/purchaseService";
+import { FormEvent, useCallback } from "react";
 import { checkIsClient } from "typescript/typeguards/Client";
 import { Client } from "typescript/types/Client";
-import { Purchase } from "typescript/types/Purchase";
 import { getDataFromForm } from "utils";
-import CheckoutModal from "./CheckoutModal";
 
 interface IProps {
   onSubmit: (user: Client) => void;

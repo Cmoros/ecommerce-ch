@@ -10,7 +10,7 @@ import {
 import FullSpinner from "components/FullSpinner";
 import Price from "components/Price";
 import { useCartContext } from "context/cartContext";
-import React, { useState } from "react";
+import { useState } from "react";
 import { addNewPurchase, PrePurchase } from "services/purchaseService";
 import { Client } from "typescript/types/Client";
 import { Purchase } from "typescript/types/Purchase";

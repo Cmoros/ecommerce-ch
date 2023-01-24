@@ -3,9 +3,12 @@ import {
   addDoc,
   collection,
   doc,
+  DocumentData,
+  documentId,
   getDoc,
   getDocs,
   query,
+  QuerySnapshot,
   runTransaction,
   Transaction,
   updateDoc,
@@ -42,12 +45,9 @@ export const getItemById = async (id: string): Promise<IItem | null> => {
   return null;
 };
 
-export const getItemsByCategory = async (
-  category: string
-): Promise<IItem[]> => {
-  if (!category) return await getAllItems();
-  const q = query(itemsCollection, where("category", "==", category));
-  const snapshot = await getDocs(q);
+const getItemFromSnapshot = (
+  snapshot: QuerySnapshot<DocumentData>
+): IItem[] => {
   const items: IItem[] = [];
   for (const doc of snapshot.docs) {
     const item = doc.data();
@@ -55,6 +55,23 @@ export const getItemsByCategory = async (
     if (checkIsItem(item)) items.push(item);
   }
   return items;
+};
+
+export const getItemsByCategory = async (
+  category: string
+): Promise<IItem[]> => {
+  if (!category) return await getAllItems();
+  const q = query(itemsCollection, where("category", "==", category));
+  const snapshot = await getDocs(q);
+  return getItemFromSnapshot(snapshot);
+};
+
+export const getManyItemsById = async (
+  ids: IItem["id"][]
+): Promise<IItem[]> => {
+  const q = query(itemsCollection, where(documentId(), "in", ids));
+  const snapshot = await getDocs(q);
+  return getItemFromSnapshot(snapshot);
 };
 
 export const addNewItem = async (item: IItem): Promise<string> => {

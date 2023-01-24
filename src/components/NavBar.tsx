@@ -1,12 +1,15 @@
-import { Box, Button, HStack, Image, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, Link as ChakraLink } from "@chakra-ui/react";
 import NavLink from "./NavLink";
 import CartWidget from "./CartWidget";
 import { useCategoryContext } from "context/categoryContext";
 import { useAuthContext } from "context/authContext";
+import { Link } from "react-router-dom";
+import FullSpinner from "./FullSpinner";
 
 const NavBar = () => {
   const { getCategories } = useCategoryContext();
-  const { login, isAuthenticated, getUserInfo, logout } = useAuthContext();
+  const { login, isAuthenticated, getUserInfo, logout, isAuthtenticating } =
+    useAuthContext();
 
   return (
     <HStack
@@ -29,7 +32,9 @@ const NavBar = () => {
         <NavLink to="/test">Test</NavLink>
       </HStack>
       <HStack wrap="nowrap" gap="2vw">
-        {!isAuthenticated ? (
+        {isAuthtenticating ? (
+          <FullSpinner />
+        ) : !isAuthenticated ? (
           <Button
             bg="transparent"
             p={0}
@@ -45,7 +50,9 @@ const NavBar = () => {
           </Button>
         ) : (
           <HStack gap="1vw">
-            <Text
+            <ChakraLink
+              as={Link}
+              to="/wishlist"
               fontSize="xl"
               fontWeight="bold"
               textAlign="right"
@@ -53,7 +60,7 @@ const NavBar = () => {
               display={{ base: "none", sm: "block" }}
             >
               {getUserInfo()?.name}
-            </Text>
+            </ChakraLink>
             <Button onClick={logout} color="red" bg="white">
               Sign out
             </Button>
