@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
 import { Link, Text } from "@chakra-ui/react";
 import { CSSProperties, ReactNode, useState } from "react";
 import { NavLink as RNavLink } from "react-router-dom";
+import { ItemCategory } from "typescript/types/Item";
 
 const defaultStyles = {
   _hover: {
@@ -14,10 +16,16 @@ const activeStyles = {
   bg: "red.400",
 };
 
+const styles = {
+  _hover: {
+    bg: "red.400",
+  },
+};
+
 const NavLink = ({ to, children }: { to: string; children: ReactNode }) => {
-  const [styles, setStyles] = useState<
-    typeof defaultStyles | typeof activeStyles
-  >(defaultStyles);
+  // const [styles, setStyles] = useState<
+  //   typeof defaultStyles | typeof activeStyles
+  // >(defaultStyles);
 
   return (
     <Text>
@@ -27,18 +35,18 @@ const NavLink = ({ to, children }: { to: string; children: ReactNode }) => {
         rounded={"md"}
         as={RNavLink}
         to={to}
-        style={({ isActive }: { isActive: boolean }): CSSProperties => {
-          if (isActive) {
-            if ("_hover" in styles) {
-              setStyles(activeStyles);
-            }
-          } else {
-            if ("bg" in styles) {
-              setStyles(defaultStyles);
-            }
-          }
-          return {};
-        }}
+        // style={({ isActive }: { isActive: boolean }): CSSProperties => {
+        //   if (isActive) {
+        //     if ("_hover" in styles) {
+        //       setStyles(activeStyles);
+        //     }
+        //   } else {
+        //     if ("bg" in styles) {
+        //       setStyles(defaultStyles);
+        //     }
+        //   }
+        //   return {};
+        // }}
         border="2px"
         borderColor="transparent"
         {...styles}

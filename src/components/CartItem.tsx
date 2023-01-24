@@ -11,23 +11,24 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { Link as ChakraLink } from "@chakra-ui/react";
-import { useCartContext } from "context/cartContext";
 import { Link } from "react-router-dom";
 import CartItemCount from "./CartItemCount";
 import { IItemCard } from "../typescript/types/Item";
 import Price from "./Price";
+import { memo } from "react";
 
 interface IProps {
   item: IItemCard;
+  onUpdate: (item: IItemCard) => void;
+  onRemove: (id: IItemCard["id"]) => void;
 }
 
-const CartItem = ({ item }: IProps) => {
-  const { updateQuantity, removeItem } = useCartContext();
-
+const CartItem = ({ item, onRemove, onUpdate }: IProps) => {
   const { id, title, price, pictureUrl, quantity, stock } = item;
+  console.log({ id });
 
   const onChangeQuantity = (updated: number): void => {
-    updateQuantity(id, updated);
+    onUpdate({ ...item, quantity: updated });
   };
 
   return (
@@ -79,7 +80,7 @@ const CartItem = ({ item }: IProps) => {
             size="xs"
             title="Remove from cart"
             colorScheme="red"
-            onClick={() => removeItem(item.id)}
+            onClick={() => onRemove(item.id)}
           />
           <Text>
             <Price fontSize="xl">{price}</Price> / u
@@ -98,4 +99,4 @@ const CartItem = ({ item }: IProps) => {
   );
 };
 
-export default CartItem;
+export default memo(CartItem);

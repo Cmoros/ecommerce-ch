@@ -1,4 +1,4 @@
-export type Category = "grain" | "vegetable" | "fruit";
+export type ItemCategory = "grain" | "vegetable" | "fruit";
 
 export type Nutritions = {
   carbohydrates: number;
@@ -14,7 +14,7 @@ export default interface IItem {
   price: number;
   stock: number;
   pictureUrl: string;
-  category: Category;
+  category: ItemCategory;
   id: string;
   description: string;
   nutritions: Nutritions;

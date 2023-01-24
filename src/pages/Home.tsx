@@ -3,7 +3,7 @@ import ItemListContainer from "layout/ItemListContainer";
 
 const Home = () => {
   return (
-    <Box>
+    <Box w="full">
       <Heading as="h1">Home</Heading>
       <ItemListContainer />
     </Box>

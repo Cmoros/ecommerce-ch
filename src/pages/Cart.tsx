@@ -10,26 +10,34 @@ import {
   VStack,
   Link as ChakraLink,
   Flex,
-  SimpleGrid,
 } from "@chakra-ui/react";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CartItem from "components/CartItem";
+import CartItemList from "components/CartItemList";
 import Price from "components/Price";
 import { useCartContext } from "context/cartContext";
+import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { getCartList, getTotalPrice, clear, setReadyToPay } = useCartContext();
   const cartList = getCartList();
 
-  const handlePay = (): void => {
+  const handlePay = useCallback((): void => {
     setReadyToPay(true);
-  };
+  }, [setReadyToPay]);
 
   if (cartList.length === 0)
     return (
-      <Center flexDir="column" gap={5}>
+      <Center
+        flexDir="column"
+        gap={5}
+        m="auto"
+        w="fit-content"
+        h="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Alert status="info" fontSize="2xl">
           <AlertIcon />
           Cart is Empty... For Now
@@ -48,6 +56,7 @@ const Cart = () => {
       maxW="container.xl"
       borderWidth="1px"
       borderColor="red.400"
+      w="full"
       borderRadius="2xl"
       p="calc(2px + 2vw)"
     >
@@ -72,20 +81,18 @@ const Cart = () => {
         </Button>
         <Heading>Your Basket</Heading>
       </Flex>
-      <SimpleGrid spacing="4" gap={4} columns={{ base: 1, lg: 2 }}>
-        {cartList.map((item) => (
-          <CartItem item={item} key={item.id} />
-        ))}
-      </SimpleGrid>
+      <CartItemList
+        items={cartList}
+        // addItem={addItem}
+        // removeItem={removeItem}
+      />
       <Center mt="10">
         <VStack gap="2">
           <Heading fontSize="2xl" gap="5" display="flex">
             Total: <Price>{getTotalPrice()}</Price>
           </Heading>
-          <Link to="/checkout">
-            <Button colorScheme="red" onClick={handlePay}>
-              Pay Now
-            </Button>
+          <Link to="/checkout" onClick={handlePay}>
+            <Button colorScheme="red">Pay Now</Button>
           </Link>
         </VStack>
       </Center>

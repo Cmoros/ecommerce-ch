@@ -1,9 +1,11 @@
 import { Box, HStack } from "@chakra-ui/react";
 import NavLink from "./NavLink";
-import links from "constants/navBarLinks";
 import CartWidget from "./CartWidget";
+import { useCategoryContext } from "context/categoryContext";
 
 const NavBar = () => {
+  const { getCategories } = useCategoryContext();
+
   return (
     <HStack
       as="nav"
@@ -15,8 +17,9 @@ const NavBar = () => {
       }}
     >
       <HStack spacing={4} display={{ base: "none", md: "flex" }}>
-        {links.map(({ to, label }) => (
-          <NavLink key={label} to={to}>
+        <NavLink to="/home">Home</NavLink>
+        {getCategories().map(({ category, label }) => (
+          <NavLink key={label} to={`category/${category}`}>
             {label}
           </NavLink>
         ))}

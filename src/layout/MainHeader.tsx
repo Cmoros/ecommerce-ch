@@ -7,16 +7,27 @@ import {
   Text,
   useDisclosure,
   VStack,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import links from "constants/navBarLinks";
 import NavBar from "components/NavBar";
+import { useCategoryContext } from "context/categoryContext";
 
 function MainHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { getCategories } = useCategoryContext();
   return (
-    <Box bg={"red.500"} px={4} w="full" color="white">
+    <Box
+      as="header"
+      bg={"red.500"}
+      zIndex="dropdown"
+      px={4}
+      w="full"
+      color="white"
+      position="sticky"
+      top="0"
+    >
       <Flex
         h={16}
         alignItems={"center"}
@@ -34,13 +45,19 @@ function MainHeader() {
             color="white"
           />
           <VStack>
-            <Text fontSize="xl" display="flex" flexDirection="column" gap="0">
-              <Link to="/">
+            <Text fontSize="xl">
+              <ChakraLink
+                as={Link}
+                to="/"
+                display="flex"
+                flexDirection="column"
+                gap="0"
+              >
                 <Text as="span" mb="-2">
                   Frutería
                 </Text>
                 <Text as="span">Eudalia</Text>
-              </Link>
+              </ChakraLink>
             </Text>
           </VStack>
           <NavBar />
@@ -49,8 +66,9 @@ function MainHeader() {
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
-            {links.map(({ to, label }) => (
-              <Link key={label} to={to}>
+            <Link to={"/home"}>Home</Link>
+            {getCategories().map(({ category, label }) => (
+              <Link key={label} to={`/category/${category}`}>
                 {label}
               </Link>
             ))}

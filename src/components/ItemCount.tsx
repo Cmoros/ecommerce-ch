@@ -9,13 +9,12 @@ import {
 import { faBasketShopping, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useRef, useState } from "react";
-import { IPropsCard } from "./Item";
 import { IItemCard } from "../typescript/types/Item";
 
 interface IProps {
   stock: IItemCard["stock"];
   initial: IItemCard["quantity"];
-  onAdd: IPropsCard["onAdd"];
+  onAdd: (quantity: number) => void;
 }
 
 const defaultStyles = {
@@ -33,7 +32,11 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
   const [wasAdded, setAdded] = useState(false);
   const styles = wasAdded ? addedStyles : defaultStyles;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const timeout = useRef<NodeJS.Timeout>(setTimeout(() => {}));
+  const timeout = useRef<NodeJS.Timeout>(
+    setTimeout(() => {
+      ("");
+    })
+  );
 
   const handleAdded = useCallback(() => {
     setAdded(true);

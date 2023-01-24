@@ -9,22 +9,14 @@ interface IProps {
 }
 
 const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
-  const handleAdd = (toAdd: number) => {
+  const handleAdd = () => {
     if (quantity === stock) return;
-    if (quantity + toAdd >= stock) {
-      onChange(stock);
-      return;
-    }
-    onChange(quantity + 1);
+    onChange(1);
   };
 
-  const handleSubstract = (toSubstract: number) => {
+  const handleSubstract = () => {
     if (quantity === 1) return;
-    if (quantity - toSubstract <= 1) {
-      onChange(1);
-      return;
-    }
-    onChange(quantity - toSubstract);
+    onChange(-1);
   };
 
   return (
@@ -41,7 +33,7 @@ const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
           colorScheme="red"
           aria-label={"minus 1"}
           size="sm"
-          onClick={() => handleSubstract(1)}
+          onClick={handleSubstract}
           disabled={quantity === 1}
         />
         <Text>{quantity}</Text>
@@ -50,7 +42,7 @@ const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
           colorScheme="red"
           size="sm"
           aria-label={"add 1"}
-          onClick={() => handleAdd(1)}
+          onClick={handleAdd}
           disabled={quantity === stock}
         />
       </ButtonGroup>

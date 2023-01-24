@@ -1,5 +1,11 @@
 import { IItemCard } from "components//../typescript/types/Item";
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
 
 const cartContext = createContext({
   getCartList: (): IItemCard[] => {
@@ -14,15 +20,15 @@ const cartContext = createContext({
   clear: () => {
     console.log("Default Context:");
   },
-  isInCart: (id: IItemCard["id"]) => {
-    console.log("Default Context:", { id });
-  },
+  // isInCart: (id: IItemCard["id"]) => {
+  //   console.log("Default Context:", { id });
+  // },
   getTotalQuantity: (): number => {
     return 0;
   },
-  updateQuantity: (id: IItemCard["id"], updated: number) => {
-    console.log("Default Context", { id, updated });
-  },
+  // updateQuantity: (id: IItemCard["id"], updated: number) => {
+  //   console.log("Default Context", { id, updated });
+  // },
   getItem: (id: IItemCard["id"]): IItemCard | undefined => {
     return {
       name: "Default",
@@ -52,23 +58,34 @@ const cartContext = createContext({
   setReadyToPay: (isReadyToPay: boolean) => {
     console.log("Default set ready to pay", { isReadyToPay });
   },
+  replaceCartItemList: (cartItems: IItemCard[]): void =>
+    console.log("Default cartItems:", cartItems),
 });
+
+type CartList = Record<IItemCard["id"], IItemCard>;
 
 interface IProps {
   children: ReactNode;
-  initialState?: Record<number, IItemCard>;
+  initialState?: CartList;
 }
 
 export const CartContextProvider = ({ children, initialState }: IProps) => {
-  const [cartList, setCartList] = useState<Record<IItemCard["id"], IItemCard>>(
-    initialState ?? {}
-  );
+  const [cartList, setCartList] = useState<CartList>(initialState ?? {});
 
   const [isReadyToPay, setReadyToPay] = useState(false);
 
   const getReadyToPay = () => isReadyToPay;
 
-  const isInCart = (id: IItemCard["id"]): boolean => {
+  const replaceCartItemList = useCallback((cartItems: IItemCard[]) => {
+    const newCartList: CartList = {};
+    for (const item of cartItems) {
+      const { id } = item;
+      newCartList[id] = item;
+    }
+    setCartList(newCartList);
+  }, []);
+
+  const isInCart = (cartList: CartList, id: IItemCard["id"]): boolean => {
     return Boolean(cartList[id]);
   };
 
@@ -89,33 +106,42 @@ export const CartContextProvider = ({ children, initialState }: IProps) => {
     return cartList[id];
   };
 
-  const updateQuantity = (id: IItemCard["id"], newQuantity: number): void => {
-    const item = cartList[id];
-    setCartList((old) => ({
-      ...old,
-      [id]: {
-        ...item,
-        quantity: Math.min(item.stock, newQuantity),
-      },
-    }));
-  };
+  const addItem = useCallback((newItem: IItemCard): void => {
+    const { id } = newItem;
+    setCartList((old) => {
+      const toAdd = newItem.quantity;
+      let total: number;
+      if (toAdd === 0) return old;
+      const { stock } = newItem;
+      if (isInCart(old, id)) {
+        const { quantity } = old[id];
+        if (quantity + toAdd > stock) {
+          total = stock;
+        } else if (quantity + toAdd < 1) {
+          total = 1;
+        } else {
+          total = quantity + toAdd;
+        }
+        return {
+          ...old,
+          [id]: { ...newItem, quantity: total },
+        };
+      }
+      if (toAdd < 0) return old;
+      if (toAdd > stock) {
+        newItem.quantity = stock;
+      }
+      return { ...old, [id]: newItem };
+    });
+  }, []);
 
-  const addItem = (newItem: IItemCard): void => {
-    if (isInCart(newItem.id)) {
-      const { quantity } = cartList[newItem.id];
-      updateQuantity(newItem.id, quantity + newItem.quantity);
-    } else {
-      setCartList((old) => ({ ...old, [newItem.id]: newItem }));
-    }
-  };
-
-  const removeItem = (id: IItemCard["id"]): void => {
+  const removeItem = useCallback((id: IItemCard["id"]): void => {
     setCartList((old) => {
       const copy = { ...old };
       delete copy[id];
       return copy;
     });
-  };
+  }, []);
 
   const getTotalQuantity = (): number => {
     let total = 0;
@@ -134,12 +160,13 @@ export const CartContextProvider = ({ children, initialState }: IProps) => {
     <cartContext.Provider
       value={{
         getCartList,
-        updateQuantity,
+        // updateQuantity,
+        replaceCartItemList,
         addItem,
         getItem,
         removeItem,
         clear,
-        isInCart,
+        // isInCart,
         getTotalQuantity,
         getTotalPrice,
         getReadyToPay,

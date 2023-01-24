@@ -13,27 +13,37 @@ import {
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { IItemCard } from "../typescript/types/Item";
+import { memo, useCallback } from "react";
 
 export interface IPropsCard {
   item: IItemCard;
-  onAdd: (quantityToAdd: number) => void;
+  addItem: (newItem: IItemCard) => void;
 }
 
-const Item = ({ item, onAdd }: IPropsCard) => {
+const Item = ({ item, addItem }: IPropsCard) => {
+  console.log("rerender item", item.id);
   const { title, price, pictureUrl, stock, quantity, description, id } = item;
+
+  const onAdd = useCallback(
+    (quantityToAdd: number) => {
+      addItem({ ...item, quantity: quantityToAdd });
+    },
+    [addItem, item]
+  );
   return (
-    <Card maxW="sm">
+    <Card size="sm">
       <CardBody>
         <Link to={`/item/${id}`}>
           <Image
             src={pictureUrl}
             alt={title}
             borderRadius="lg"
-            minH="168px"
+            h="calc(100px + 2vw)"
+            w="full"
             objectFit="cover"
           />
         </Link>
-        <Stack mt="6" spacing="3">
+        <Stack mt="calc(3px + 1vw)" spacing="calc(3px + 1vw)">
           <Link to={`/item/${id}`}>
             <Heading size="md">{title}</Heading>
           </Link>
@@ -59,4 +69,4 @@ const Item = ({ item, onAdd }: IPropsCard) => {
   );
 };
 
-export default Item;
+export default memo(Item);
