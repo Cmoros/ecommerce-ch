@@ -13,16 +13,19 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import NavBar from "components/NavBar";
 import { useCategoryContext } from "context/categoryContext";
+import { useAuthContext } from "context/authContext";
+import FullSpinner from "components/FullSpinner";
 
 function MainHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isAuthenticated, isAuthtenticating, getUserInfo } = useAuthContext();
   const { getCategories } = useCategoryContext();
   return (
     <Box
       as="header"
       bg={"red.500"}
       zIndex="sticky"
-      px={4}
+      px={{ base: 1, sm: 2, md: 4 }}
       w="full"
       color="white"
       position="sticky"
@@ -72,6 +75,15 @@ function MainHeader() {
                 {label}
               </Link>
             ))}
+            {isAuthtenticating ? (
+              <FullSpinner />
+            ) : (
+              isAuthenticated && (
+                <Box textAlign="right" pr="2" fontSize="xl">
+                  <Link to="/wishlist">{getUserInfo()?.name}</Link>
+                </Box>
+              )
+            )}
           </Stack>
         </Box>
       ) : null}

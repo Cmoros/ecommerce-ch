@@ -6,6 +6,7 @@ type IProps = TextProps;
 
 const Price = (props: IProps) => {
   const { children } = props;
+  if (!children) return null;
   const [int, dec] = children!.toString().split(".");
   return (
     <Text

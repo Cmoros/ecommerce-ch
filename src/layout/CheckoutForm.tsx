@@ -73,7 +73,7 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
             }
           }}
         >
-          <Image src="/src/public/assets/img/google/btn_google_signin_dark_normal_web.png" />
+          <Image src="https://live.staticflickr.com/65535/52647982940_9f56b494db_m.jpg" />
         </Button>
       </Center>
     </>

@@ -19,21 +19,28 @@ const FavoriteButton = ({ active, onLike }: IProps) => {
       h="5"
       zIndex="dropdown"
     >
-      <IconButton
-        position="absolute"
-        icon={<FontAwesomeIcon icon={faHeartSolid} />}
-        aria-label="like"
-        // _hover={{ display: "block" }}
-        onClick={() => onLike(false)}
-      />
-      <IconButton
-        position="absolute"
-        icon={<FontAwesomeIcon icon={faHeartRegular} />}
-        aria-label="remove like"
-        display={active ? `none` : `block`}
-        // _hover={{ display: "none" }}
-        onClick={() => onLike(true)}
-      />
+      {active ? (
+        <IconButton
+          position="absolute"
+          title="Remove Like"
+          data-testid="rm-like"
+          icon={<FontAwesomeIcon icon={faHeartSolid} />}
+          aria-label="remove like"
+          // _hover={{ display: "block" }}
+          onClick={() => onLike(false)}
+        />
+      ) : (
+        <IconButton
+          position="absolute"
+          icon={<FontAwesomeIcon icon={faHeartRegular} />}
+          aria-label="like"
+          data-testid="add-like"
+          title="Add Like"
+          // display={active ? `none` : `block`}
+          // _hover={{ display: "none" }}
+          onClick={() => onLike(true)}
+        />
+      )}
     </Center>
   );
 };

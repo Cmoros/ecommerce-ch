@@ -6,7 +6,6 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
 
 interface IProps {
   onLogin: () => void;

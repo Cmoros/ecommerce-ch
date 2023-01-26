@@ -1,5 +1,5 @@
-import { IItemCard } from "components//../typescript/types/Item";
-import React, {
+import { IItemCard } from "components/../typescript/types/Item";
+import {
   createContext,
   ReactNode,
   useCallback,
@@ -52,12 +52,12 @@ const cartContext = createContext({
   getTotalPrice: (): number => {
     return 0;
   },
-  getReadyToPay: (): boolean => {
-    return false;
-  },
-  setReadyToPay: (isReadyToPay: boolean) => {
-    console.log("Default set ready to pay", { isReadyToPay });
-  },
+  // getReadyToPay: (): boolean => {
+  //   return false;
+  // },
+  // setReadyToPay: (isReadyToPay: boolean) => {
+  //   console.log("Default set ready to pay", { isReadyToPay });
+  // },
   replaceCartItemList: (cartItems: IItemCard[]): void =>
     console.log("Default cartItems:", cartItems),
 });
@@ -66,15 +66,15 @@ type CartList = Record<IItemCard["id"], IItemCard>;
 
 interface IProps {
   children: ReactNode;
-  initialState?: CartList;
+  // initialState?: CartList;
 }
 
-export const CartContextProvider = ({ children, initialState }: IProps) => {
-  const [cartList, setCartList] = useState<CartList>(initialState ?? {});
+export const CartContextProvider = ({ children }: IProps) => {
+  const [cartList, setCartList] = useState<CartList>({});
 
-  const [isReadyToPay, setReadyToPay] = useState(false);
+  // const [isReadyToPay, setReadyToPay] = useState(false);
 
-  const getReadyToPay = () => isReadyToPay;
+  // const getReadyToPay = () => isReadyToPay;
 
   const replaceCartItemList = useCallback((cartItems: IItemCard[]) => {
     const newCartList: CartList = {};
@@ -169,8 +169,8 @@ export const CartContextProvider = ({ children, initialState }: IProps) => {
         // isInCart,
         getTotalQuantity,
         getTotalPrice,
-        getReadyToPay,
-        setReadyToPay,
+        // getReadyToPay,
+        // setReadyToPay,
       }}
     >
       {children}

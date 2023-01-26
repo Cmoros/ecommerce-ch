@@ -14,14 +14,14 @@ const CartWidget = () => {
   const { getTotalQuantity } = useCartContext();
   const totalQuantity = getTotalQuantity();
   return (
-    <ChakraLink as={Link} to={"/cart"} position="relative">
+    <ChakraLink as={Link} to={"/cart"} position="relative" role="link">
       {totalQuantity > 0 && (
         <Box
           w="5"
           h="5"
           position="absolute"
-          top="-3.5"
-          right="-2.5"
+          top="-2"
+          right="-1"
           borderRadius="50%"
           bg="white"
           zIndex="popover"
@@ -43,6 +43,7 @@ const CartWidget = () => {
         aria-label="View cart"
         size="md"
         color="red.500"
+        role="img"
         border="1px"
         _hover={{ bg: "red.500", color: "white" }}
         _active={{ bg: "red.700", color: "white" }}

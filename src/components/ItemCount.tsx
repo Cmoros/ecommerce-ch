@@ -28,7 +28,7 @@ const addedStyles = {
 };
 
 const ItemCount = ({ stock, initial, onAdd }: IProps) => {
-  const [quantity, setQuantity] = useState(initial);
+  const [quantity, setQuantity] = useState(initial > 0 ? initial : 1);
   const [wasAdded, setAdded] = useState(false);
   const styles = wasAdded ? addedStyles : defaultStyles;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -47,7 +47,7 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
   }, []);
 
   const handleAdd = (toAdd: number) => {
-    if (quantity === stock) return;
+    // if (quantity >= stock) return;
     if (quantity + toAdd >= stock) {
       setQuantity(stock);
       return;
@@ -56,7 +56,7 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
   };
 
   const handleSubstract = (toSubstract: number) => {
-    if (quantity === 1) return;
+    // if (quantity === 1) return;
     if (quantity - toSubstract <= 1) {
       setQuantity(1);
       return;
@@ -77,24 +77,32 @@ const ItemCount = ({ stock, initial, onAdd }: IProps) => {
           icon={<MinusIcon />}
           colorScheme="red"
           aria-label={"minus 1"}
+          data-testid="minus-1"
+          title="Remove 1"
           onClick={() => handleSubstract(1)}
-          disabled={quantity === 1}
+          disabled={quantity <= 1 || stock <= 0}
         />
-        <Text>{quantity}</Text>
+        <Text data-testid="quantity">{stock <= 0 ? "N/S" : quantity}</Text>
         <IconButton
           icon={<AddIcon />}
           colorScheme="red"
           aria-label={"add 1"}
+          title="Add 1"
+          data-testid="add-1"
           onClick={() => handleAdd(1)}
-          disabled={quantity === stock}
+          disabled={quantity >= stock}
         />
       </ButtonGroup>
 
       <Button
         {...styles}
         textAlign="center"
+        data-testid="add-to-cart"
+        title="Add to Cart"
+        disabled={stock <= 0 || quantity > stock}
         maxW={175}
         onClick={() => {
+          // if (quantity <= 0) return;
           handleAdded();
           onAdd(quantity);
         }}
