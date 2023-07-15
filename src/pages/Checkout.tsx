@@ -1,20 +1,20 @@
 import { Container } from "@chakra-ui/react";
 import FullSpinner from "components/FullSpinner";
 import { useAuthContext } from "context/authContext";
-import { useCartContext } from "context/cartContext";
+// import { useCartContext } from "context/cartContext";
 import CheckoutForm from "layout/CheckoutForm";
 import PayWindow from "layout/PayWindow";
 import { useCallback, useEffect, useState } from "react";
 import { Client } from "typescript/types/Client";
 
 const Checkout = () => {
-  const { setReadyToPay } = useCartContext();
+  // const { setReadyToPay } = useCartContext();
   const { isAuthenticated, getUserInfo, isAuthtenticating } = useAuthContext();
   const [user, setUser] = useState<Client | null>(null);
 
-  useEffect(() => {
-    return () => setReadyToPay(false);
-  }, [setReadyToPay]);
+  // useEffect(() => {
+  //   return () => setReadyToPay(false);
+  // }, [setReadyToPay]);
 
   useEffect(() => {
     const userLoggedIn = getUserInfo();
