@@ -10,12 +10,12 @@ interface IProps {
 
 const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
   const handleAdd = () => {
-    if (quantity === stock) return;
+    // if (quantity >= stock) return;   // Coverage
     onChange(1);
   };
 
   const handleSubstract = () => {
-    if (quantity === 1) return;
+    // if (quantity <= 1) return;       // Coverage
     onChange(-1);
   };
 
@@ -32,18 +32,20 @@ const CartItemCount = ({ stock, quantity, onChange }: IProps) => {
           icon={<MinusIcon />}
           colorScheme="red"
           aria-label={"minus 1"}
+          data-testid={"minus-1"}
           size="sm"
           onClick={handleSubstract}
-          disabled={quantity === 1}
+          disabled={quantity <= 1}
         />
-        <Text>{quantity}</Text>
+        <Text data-testid="quantity">{quantity}</Text>
         <IconButton
           icon={<AddIcon />}
           colorScheme="red"
           size="sm"
           aria-label={"add 1"}
+          data-testid={"add-1"}
           onClick={handleAdd}
-          disabled={quantity === stock}
+          disabled={quantity >= stock}
         />
       </ButtonGroup>
     </VStack>

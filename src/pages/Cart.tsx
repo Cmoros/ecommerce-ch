@@ -16,16 +16,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartItemList from "components/CartItemList";
 import Price from "components/Price";
 import { useCartContext } from "context/cartContext";
-import { useCallback } from "react";
+// import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { getCartList, getTotalPrice, clear, setReadyToPay } = useCartContext();
+  const { getCartList, getTotalPrice, clear } = useCartContext();
   const cartList = getCartList();
 
-  const handlePay = useCallback((): void => {
-    setReadyToPay(true);
-  }, [setReadyToPay]);
+  // const handlePay = useCallback((): void => {
+  //   setReadyToPay(true);
+  // }, [setReadyToPay]);
 
   if (cartList.length === 0)
     return (
@@ -37,6 +37,7 @@ const Cart = () => {
         h="100%"
         alignItems="center"
         justifyContent="center"
+        data-testid="cart-empty"
       >
         <Alert status="info" fontSize="2xl">
           <AlertIcon />
@@ -59,6 +60,7 @@ const Cart = () => {
       w="full"
       borderRadius="2xl"
       p="calc(2px + 2vw)"
+      data-testid="cart-page"
     >
       <Flex
         w="full"
@@ -89,9 +91,13 @@ const Cart = () => {
       <Center mt="10">
         <VStack gap="2">
           <Heading fontSize="2xl" gap="5" display="flex">
-            Total: <Price>{getTotalPrice()}</Price>
+            Total:{" "}
+            <Price data-testid="cart-totalprice">{getTotalPrice()}</Price>
           </Heading>
-          <Link to="/checkout" onClick={handlePay}>
+          <Link
+            to="/checkout"
+            // onClick={handlePay}
+          >
             <Button colorScheme="red">Pay Now</Button>
           </Link>
         </VStack>

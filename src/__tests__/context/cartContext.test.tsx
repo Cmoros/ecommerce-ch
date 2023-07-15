@@ -1,8 +1,76 @@
 import { renderHook } from "@testing-library/react";
-import { CartContextProvider, useCartContext } from "context/cartContext";
+import {
+  CartContextProvider,
+  CartList,
+  useCartContext,
+} from "context/cartContext";
 import { ReactNode } from "react";
 import { act } from "react-dom/test-utils";
 import { IItemCard } from "typescript/types/Item";
+import { doActHookMethod } from "utils/doActHookMethod";
+
+export const initialState: CartList = {
+  "1": {
+    name: "Brown Rice",
+    title: "Organic Brown Rice",
+    price: 47,
+    quantity: 10,
+    stock: 20,
+    pictureUrl:
+      "https://cdn.mos.cms.futurecdn.net/WiB5sGgjBe5tcryxwdak8C-1200-80.jpg",
+    category: "grain",
+    id: "1",
+    description:
+      "Whole grain brown rice, perfect for a healthy and satisfying meal.",
+    nutritions: {
+      carbohydrates: 45,
+      protein: 5,
+      fat: 1,
+      calories: 210,
+      sugar: 0,
+    },
+  },
+  "2": {
+    name: "Quinoa",
+    title: "Organic Quinoa",
+    price: 67,
+    stock: 10,
+    quantity: 1,
+    pictureUrl:
+      "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2Farchive%2Fd4fc553aa34f8086392b5cd44695759b57b5795d",
+    category: "grain",
+    id: "2",
+    description:
+      "Gluten-free quinoa, a superfood packed with protein and minerals.",
+    nutritions: {
+      carbohydrates: 40,
+      protein: 8,
+      fat: 3,
+      calories: 222,
+      sugar: 1,
+    },
+  },
+  "3": {
+    name: "Broccoli",
+    title: "Fresh Broccoli",
+    price: 25,
+    stock: 5,
+    quantity: 5,
+    pictureUrl:
+      "https://localfarmbox.co.uk/images/P/Broccoli-in-a-pile-593310638_3020x2000.jpeg",
+    category: "vegetable",
+    id: "3",
+    description:
+      "Crunchy and healthy broccoli, rich in vitamins and antioxidants.",
+    nutritions: {
+      carbohydrates: 6,
+      protein: 2,
+      fat: 0,
+      calories: 55,
+      sugar: 2,
+    },
+  },
+};
 
 describe("CartContextProvider", () => {
   const testItem: IItemCard = {
@@ -67,21 +135,6 @@ describe("CartContextProvider", () => {
   const wrapper = ({ children }: { children: ReactNode }) => (
     <CartContextProvider>{children} </CartContextProvider>
   );
-
-  const doActHookMethod = <
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    T extends Record<string, (...args: any[]) => any>
-  >(result: {
-    current: T;
-  }) => {
-    return async <Z extends keyof T>(
-      method: Z,
-      ...params: Parameters<T[Z]>
-    ): Promise<ReturnType<T[Z]>> => {
-      const fn = result.current[method];
-      return act(() => fn(...params));
-    };
-  };
 
   it("should add item to cart", async () => {
     const { result } = renderHook(() => useCartContext(), {

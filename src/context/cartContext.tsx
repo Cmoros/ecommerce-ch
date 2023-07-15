@@ -62,15 +62,15 @@ const cartContext = createContext({
     console.log("Default cartItems:", cartItems),
 });
 
-type CartList = Record<IItemCard["id"], IItemCard>;
+export type CartList = Record<IItemCard["id"], IItemCard>;
 
 interface IProps {
   children: ReactNode;
-  // initialState?: CartList;
+  initialState?: CartList;
 }
 
-export const CartContextProvider = ({ children }: IProps) => {
-  const [cartList, setCartList] = useState<CartList>({});
+export const CartContextProvider = ({ children, initialState }: IProps) => {
+  const [cartList, setCartList] = useState<CartList>(initialState || {});
 
   // const [isReadyToPay, setReadyToPay] = useState(false);
 

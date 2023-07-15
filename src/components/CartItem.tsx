@@ -17,7 +17,7 @@ import { IItemCard } from "../typescript/types/Item";
 import Price from "./Price";
 import { memo } from "react";
 
-interface IProps {
+export interface IProps {
   item: IItemCard;
   onUpdate: (item: IItemCard) => void;
   onRemove: (id: IItemCard["id"]) => void;
@@ -25,7 +25,6 @@ interface IProps {
 
 const CartItem = ({ item, onRemove, onUpdate }: IProps) => {
   const { id, title, price, pictureUrl, quantity, stock } = item;
-  console.log({ id });
 
   const onChangeQuantity = (updated: number): void => {
     onUpdate({ ...item, quantity: updated });
@@ -38,6 +37,7 @@ const CartItem = ({ item, onRemove, onUpdate }: IProps) => {
       overflow="hidden"
       variant="outline"
       w="full"
+      data-testid={`cartitem-id-${id}`}
     >
       <Image
         objectFit="cover"
@@ -46,12 +46,15 @@ const CartItem = ({ item, onRemove, onUpdate }: IProps) => {
         src={pictureUrl}
         alt={title}
         minW="0"
+        data-testid="cartitem-image"
       />
 
       <HStack justifyContent="space-between" w="full">
         <CardBody>
-          <ChakraLink as={Link} to={`/item/${id}`}>
-            <Heading size="md">{title}</Heading>
+          <ChakraLink as={Link} to={`/item/${id}`} data-testid="cartitem-link">
+            <Heading size="md" data-testid="cartitem-title">
+              {title}
+            </Heading>
           </ChakraLink>
 
           <Text py="2">
@@ -80,13 +83,19 @@ const CartItem = ({ item, onRemove, onUpdate }: IProps) => {
             size="xs"
             title="Remove from cart"
             colorScheme="red"
+            data-testid="cartitem-remove"
             onClick={() => onRemove(item.id)}
           />
           <Text>
-            <Price fontSize="xl">{price}</Price> / u
+            <Price fontSize="xl" data-testid="cartitem-price">
+              {price}
+            </Price>{" "}
+            / u
           </Text>
           <Text>
-            <Price fontSize="xl">{price * quantity}</Price>
+            <Price fontSize="xl" data-testid="cartitem-subtotal">
+              {price * quantity}
+            </Price>
           </Text>
           <CartItemCount
             quantity={quantity}

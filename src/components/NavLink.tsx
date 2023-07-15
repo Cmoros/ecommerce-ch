@@ -35,6 +35,7 @@ const NavLink = ({ to, children }: { to: string; children: ReactNode }) => {
         rounded={"md"}
         as={RNavLink}
         to={to}
+        data-testid={`navlink-${to}`}
         // style={({ isActive }: { isActive: boolean }): CSSProperties => {
         //   if (isActive) {
         //     if ("_hover" in styles) {

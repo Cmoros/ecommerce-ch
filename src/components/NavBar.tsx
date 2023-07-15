@@ -29,7 +29,7 @@ const NavBar = () => {
             {label}
           </NavLink>
         ))}
-        <NavLink to="/test">Test</NavLink>
+        {/* <NavLink to="/test">Test</NavLink> */}
       </HStack>
       <HStack wrap="nowrap" gap="2vw">
         {isAuthtenticating ? (
