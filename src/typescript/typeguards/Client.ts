@@ -9,9 +9,9 @@ export const checkIsClient = (toCheck: unknown): toCheck is Client => {
     "phone" in toCheck &&
     typeof toCheck["phone"] === "string" &&
     "name" in toCheck &&
-    typeof toCheck["name"] === "string" &&
-    "likes" in toCheck &&
-    Array.isArray(toCheck.likes)
+    typeof toCheck["name"] === "string"
+    // && "likes" in toCheck
+    // && Array.isArray(toCheck.likes)
   );
 };
 

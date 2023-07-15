@@ -9,6 +9,7 @@ import Cart from "pages/Cart";
 import Checkout from "pages/Checkout";
 import NotFoundPage from "pages/404";
 import WishList from "pages/WishList";
+import MainFooter from "./MainFooter";
 
 const App = () => {
   return (
@@ -72,7 +73,9 @@ const App = () => {
           h={50}
           bgGradient="linear(to-b, red.200, red.500)"
           w="full"
-        ></Box>
+        >
+          <MainFooter />
+        </Box>
       </VStack>
     </Box>
   );

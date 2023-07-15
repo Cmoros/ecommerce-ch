@@ -27,6 +27,7 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
       if (!(target instanceof HTMLFormElement)) return;
       const formData = getDataFromForm(target);
       if (!checkIsClient(formData)) {
+        console.log(formData);
         console.error("Form data is not type client");
         return;
       }
